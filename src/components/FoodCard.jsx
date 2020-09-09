@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function FoodCard({ food }) {
   return (
@@ -10,3 +11,7 @@ function FoodCard({ food }) {
 }
 
 export default FoodCard;
+
+FoodCard.propTypes = {
+    food: proptypes.instanceOf(Object),
+};
