@@ -7,7 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   const validateInputs = (emailParam, passwordParam) => {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (passwordParam.length >= 6 && re.test(emailParam)) {
       setButton(false);
     } else {
@@ -38,7 +38,7 @@ export default function Login() {
         data-testid="password-input"
         onChange={(event) => setPassword(event.target.value) || validateInputs(email, password)}
       />
-      {disableButton ? btnDisabled : btnAbled}
+      {disableButton ? btnDisabled() : btnAbled()}
     </div>
   );
 }
