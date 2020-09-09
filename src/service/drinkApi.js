@@ -1,4 +1,4 @@
-export const drinkApi= () => ( // requisito 26
+export const drinkApi = () => ( // requisito 26
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
     .then((response) => (
       response
@@ -7,7 +7,7 @@ export const drinkApi= () => ( // requisito 26
   ))
 );
 
-export const drinkCategoryApi= () => ( // requisito 27
+export const drinkCategoryApi = () => ( // requisito 27
   fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
     .then((response) => (
       response
@@ -16,7 +16,7 @@ export const drinkCategoryApi= () => ( // requisito 27
   ))
 );
 
-export const drinkIdApi= (id) => ( // requisito 34
+export const drinkIdApi = (id) => ( // requisito 34
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
     .then((response) => (
       response
@@ -25,7 +25,7 @@ export const drinkIdApi= (id) => ( // requisito 34
   ))
 );
 
-export const drinkRecApi= () => ( // requisito 36
+export const drinkRecApi = () => ( // requisito 36
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
     .then((response) => (
       response
@@ -34,7 +34,7 @@ export const drinkRecApi= () => ( // requisito 36
   ))
 );
 
-export const drinkRandomApi= () => ( // requisito 75
+export const drinkRandomApi = () => ( // requisito 75
   fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then((response) => (
       response
