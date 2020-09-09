@@ -1,0 +1,7 @@
+.header , .footer {
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+  width: 100vh;
+}
