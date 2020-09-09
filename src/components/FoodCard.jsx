@@ -13,5 +13,5 @@ function FoodCard({ food }) {
 export default FoodCard;
 
 FoodCard.propTypes = {
-    food: proptypes.instanceOf(Object),
+  food: PropTypes.instanceOf(Object).isRequired,
 };
