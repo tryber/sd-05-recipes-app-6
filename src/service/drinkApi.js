@@ -1,5 +1,5 @@
-export const foodApi= () => (
-  fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
+export const drinkApi= () => (
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
     .then((response) => (
       response
         .json()
@@ -7,8 +7,8 @@ export const foodApi= () => (
   ))
 );
 
-export const foodCategoryApi= () => (
-  fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
+export const drinkCategoryApi= () => (
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
     .then((response) => (
       response
         .json()
@@ -16,8 +16,8 @@ export const foodCategoryApi= () => (
   ))
 );
 
-export const foodIdApi= (id) => (
-  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+export const drinkIdApi= (id) => (
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
     .then((response) => (
       response
         .json()
@@ -25,8 +25,8 @@ export const foodIdApi= (id) => (
   ))
 );
 
-export const foodRecApi= () => (
-  fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
+export const drinkRecApi= () => (
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
     .then((response) => (
       response
         .json()
@@ -34,8 +34,8 @@ export const foodRecApi= () => (
   ))
 );
 
-export const foodRandomApi= () => (
-  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+export const drinkRandomApi= () => (
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then((response) => (
       response
         .json()
