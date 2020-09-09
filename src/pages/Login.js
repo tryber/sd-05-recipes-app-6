@@ -6,22 +6,33 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const validateInputs = (email, password) => {
+  const validateInputs = (emailParam, passwordParam) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (password.length >= 6 && re.test(email)) {
+    if (passwordParam.length >= 6 && re.test(emailParam)) {
       setButton(false);
     } else {
       setButton(true);
     }
-  }
+  };
 
   const submitUser = () => {
-    const history = createBrowserHistory({forceRefresh:true});
+    const history = createBrowserHistory( {forceRefresh:true} );
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify({ email: email }));
+    localStorage.setItem('user', JSON.stringify({ email }));
     history.push('/comidas');
-    
+  };
+
+  const btnDisabled = () => {
+    return (
+      <button disabled type="button" data-testid="login-submit-btn">Entrar</button>
+    );
+  }
+
+  const btnAbled = () => {
+    return (
+      <button type="button" data-testid="login-submit-btn" onClick={() => submitUser()}>Entrar</button>
+    );
   }
 
   return (
@@ -39,10 +50,7 @@ export default function Login() {
         data-testid="password-input"
         onChange={(event) => setPassword(event.target.value) || validateInputs(email, password)}
       />
-      {
-        disableButton ? <button disabled type="button" data-testid="login-submit-btn">Entrar</button>
-        : <button type="button" data-testid="login-submit-btn" onClick={() => submitUser()}>Entrar</button>
-      }
+      {disableButton ? btnDisabled : btnAbled}
     </div>
   );
 }
