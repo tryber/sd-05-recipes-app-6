@@ -9,9 +9,9 @@ function App() {
   return (
     <Provider>
       <div>
-        <Header pageTitle={"Comida"} search={true}/>
+        <Header />
         <div id="meals">
-        <MainReceipes />
+          <MainReceipes />
         </div>
         <Footer />
       </div>
