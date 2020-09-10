@@ -1,26 +1,59 @@
 .food-card {
-  width: 150px;
-  margin-left: 15px;
-  margin-right: 15px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: inline-block;
   flex-direction: row;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 6px;
-  top: 163px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
   margin-top: 90px;
-  
+  top: 163px;
+  width: 150px;
 }
 
 .food-photo {
-  width: 150px;
   height: 140px;
+  width: 150px;
 }
 
 .food-name {
-  display: flex;
   align-items: flex-end;
+  display: flex;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.login h2{
+  color: black;
+  font-family: Roboto;
+  font-size: 39px;
+  font-style: normal;
+  font-weight: normal;
+  height: 46px;
+  margin-left: 130px;
+  margin-top: 79px;
+  width: 97px;
+}
+
+.login input {
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 58px;
+  margin-left: 35px;
+  width: 293px;
+}
+
+.btn-entrar {
+  background-color: #73E34F;
+  color: black;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 29px;
+  height: 76px;
+  margin-left: 11px;
+  margin-top: 200px;
+  width: 330px;
 }
