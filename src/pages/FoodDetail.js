@@ -12,7 +12,6 @@ function FoodDetail(props) {
     foodIdApi(props.match.params.id).then((response) => {
       setRecipe(response.meals[0]);
     });
-    
   }, []);
   console.log(recipe);
 
@@ -29,9 +28,11 @@ function FoodDetail(props) {
         <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
         <h3>Ingredients</h3>
         {ingredients.map((ingredient) => {
-          if(recipe[`strIngredient${ingredient}`] !== "") {
-            return <IngredientsList recipe={recipe} ingredient={ingredient} />
-        }})}
+          if (recipe[`strIngredient${ingredient}`] !== '') {
+            return <IngredientsList recipe={recipe} ingredient={ingredient} />;
+          }
+          return null;
+        })}
         <h3>Instructions</h3>
         <p data-testid="instructions">{recipe.strInstructions}</p>
         <button data-testid="finish-recipe-btn">Finalizar Receita</button>
