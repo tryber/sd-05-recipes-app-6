@@ -23,9 +23,9 @@ function App() {
     <Provider>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route path="/comidas/:id" component={FoodDetail} />
         <Route path="/comidas" component={MainReceipes} />
         <Route path="/bebidas" component={Drinks} />
-        <Route path="/comidas/:id" component={FoodDetail} />
         <Route path="/bebidas/:id" component={DrinksDetails} />
         <Route path="/comidas/:id/in-progress" component={FoodInProgress} />
         <Route path="/bebidas/:id/in-progress" component={DrinkInProgress} />
