@@ -22,6 +22,7 @@ function App() {
   return (
     <Provider>
       <Switch>
+        <Route exact path="/" component={Login} />
         <Route path="/receitas-feitas" component={MadeReceipes} />
         <Route path="/receitas-favoritas" component={FavoriteReceipes} />
         <Route path="/comidas/:id/in-progress" component={FoodInProgress} />
@@ -37,7 +38,6 @@ function App() {
         <Route path="/explorar/bebidas" component={ExploreDrinks} />
         <Route path="/explorar" component={Explore} />
         <Route path="/perfil" component={Profile} />
-        <Route path="/" component={Login} />
       </Switch>
     </Provider>
   );
