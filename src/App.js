@@ -1,20 +1,19 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Provider from './context/Provider';
+import Login from './pages/Login';
 import MainReceipes from './pages/MainReceipes';
-import Header from './components/Header';
-import Footer from './components/Footer';
 
 function App() {
   return (
     <Provider>
-      <div>
-        <Header />
-        <div id="meals">
-          <MainReceipes />
-        </div>
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/comidas" component={MainReceipes} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 }
