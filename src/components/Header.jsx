@@ -13,7 +13,7 @@ function Header() {
         <img className="img-perfil" src={profile} alt="Perfil" data-testid="profile-top-btn" />
       </Link>
       <h2 data-testid="page-title">Perfil</h2>
-      <button onClick={() => changeSearchBar(showSearchBar)} > 
+      <button onClick={() => changeSearchBar(showSearchBar)} >
         <img src={search} alt="Procurar" data-testid="search-top-btn" />
       </button>
     </div>

@@ -12,7 +12,7 @@ export default function Provider({ children }) {
     } else {
       setSearchBar(true);
     }
-  };
+  }
 
   const state = {
     foodData,

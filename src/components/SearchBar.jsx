@@ -4,7 +4,6 @@ import Context from '../context/Context';
 
 const SearchBar = () => {
   const { setFoodData } = useContext(Context);
-
   function checkedRadio() {
     const radios = document.getElementsByName('filtro');
     const busca = document.querySelector('#termo-de-busca').value;
@@ -29,16 +28,15 @@ const SearchBar = () => {
             }
           }
         }
-      })
+      });
     } else {
       alert('Digite um termo para busca');
     }
-
   }
   return (
     <div>
       <div>
-        <input type="text" data-testid="search-input" id="termo-de-busca"/>
+        <input type="text" data-testid="search-input" id="termo-de-busca" />
       </div>
       <div>
         <input type="radio" id="Ingrediente" name="filtro" value="Ingrediente" data-testid="ingredient-search-radio" />
@@ -53,6 +51,6 @@ const SearchBar = () => {
       </div>
     </div>
   );
-}
+};
 
 export default SearchBar;
