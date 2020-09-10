@@ -8,10 +8,32 @@
 .header {
   position: fixed;
   width: 100%;
+  height: 35px;
 }
 
 .footer {
   display: flex;
   position: absolute;
   width: 100%;
+  margin-bottom: 0;
+}
+
+.explore {
+  display: inline-block;
+  flex-direction: row;
+  margin: 90px 15px 10px;
+}
+
+.btn-exp-bebida {
+  background-color: white;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  height: 89px;
+  width: 322px;
+}
+
+.btn-exp-comida {
+  background-color: white;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  height: 89px;
+  width: 322px;
 }
