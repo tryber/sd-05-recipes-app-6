@@ -3,7 +3,6 @@ import { foodIngredienteApi, foodNomeApi, foodLetraApi } from '../service/foodAp
 export default function foodFilter(setFoodData) {
   const radios = document.getElementsByName('filtro');
   const busca = document.querySelector('#termo-de-busca').value;
-  console.log(busca);
   if (busca.length > 0) {
     radios.forEach((radio) => {
       if (radio.checked) {

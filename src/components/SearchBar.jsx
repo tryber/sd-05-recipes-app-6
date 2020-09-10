@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Context from '../context/Context';
-import foodFilter from '../service/foodFilter';
+import filter from '../service/foodFilter';
 
 const SearchBar = () => {
   const { setFoodData } = useContext(Context);
@@ -31,7 +31,7 @@ const SearchBar = () => {
         <label htmlFor="Primeira letra">Primeira letra</label>
       </div>
       <div>
-        <button data-testid="exec-search-btn" onClick={() => foodFilter(setFoodData)}>Buscar</button>
+        <button data-testid="exec-search-btn" onClick={() => filter(setFoodData)}>Buscar</button>
       </div>
     </div>
   );
