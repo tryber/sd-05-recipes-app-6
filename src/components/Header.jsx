@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
 import '../styles/header_footer.css';
-import { Link } from 'react-router-dom';
 
 function Header() {
   return (
