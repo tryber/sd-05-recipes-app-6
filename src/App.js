@@ -1,7 +1,7 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Provider from './context/Provider';
-import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import MainReceipes from './pages/MainReceipes';
 import Drinks from './pages/Drinks';
@@ -17,7 +17,7 @@ import ExploreDrinkIng from './pages/ExploreDrinkIng';
 import ExploreFoodArea from './pages/ExploreFoodArea';
 import Profile from './pages/Profile';
 import MadeReceipes from './pages/MadeReceipes';
-import FavoriteReceipes from './pages/FavoriteReceipes'
+import FavoriteReceipes from './pages/FavoriteReceipes';
 
 function App() {
   return (
