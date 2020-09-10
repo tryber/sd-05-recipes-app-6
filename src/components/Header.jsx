@@ -8,7 +8,7 @@ function Header() {
   return (
     <div className="header">
       <Link to="/perfil" data-testid="profile-top-btn">
-        <img src={profile} alt="Perfil" data-testid="profile-top-btn" />
+        <img className="img-perfil" src={profile} alt="Perfil" data-testid="profile-top-btn" />
       </Link>
       <h2 data-testid="page-title">Perfil</h2>
       <img src={search} alt="Procurar" data-testid="search-top-btn" />

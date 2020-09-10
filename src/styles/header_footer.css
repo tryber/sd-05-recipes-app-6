@@ -2,6 +2,16 @@
   background-color: #c4c4c4;
   display: flex;
   justify-content: space-around;
-  margin: 5px;
   width: 100vh;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  position: absolute;
+  width: 100%;
 }

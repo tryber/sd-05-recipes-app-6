@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import createBrowserHistory from 'history/createBrowserHistory';
+import '../styles/App.css';
 
 export default function Login() {
   const [disableButton, setButton] = useState(true);
@@ -29,7 +30,7 @@ export default function Login() {
     </button>
   );
   return (
-    <div>
+    <div className="login">
       <h2>Login</h2>
       <input
         type="email"
