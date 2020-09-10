@@ -4,6 +4,7 @@ import Context from '../context/Context';
 import FoodCard from '../components/FoodCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+// import '../styles/App.css';
 
 function MainReceipes() {
   const { foodData, setFoodData } = useContext(Context);
@@ -17,11 +18,15 @@ function MainReceipes() {
 
   return (
     <div>
-      <Header />
-      <div>
+      <header>
+        <Header />
+      </header>
+      <div className="foto-nome-comida">
         {foodData.meals.map((food) => <FoodCard food={food} />)}
       </div>
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

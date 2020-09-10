@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Provider from './context/Provider';
 import MainReceipes from './pages/MainReceipes';
 import Header from './components/Header';
