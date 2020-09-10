@@ -7,7 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   const validateInputs = (emailParam, passwordParam) => {
-    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (passwordParam.length >= 6 && re.test(emailParam)) {
       setButton(false);
     } else {
@@ -21,8 +21,12 @@ export default function Login() {
     localStorage.setItem('user', JSON.stringify({ email }));
     history.push('/comidas');
   };
-  const btnDisabled = () => <button disabled type="button" data-testid="login-submit-btn">Entrar</button>;
-  const btnAbled = () => <button type="button" data-testid="login-submit-btn" onClick={() => submitUser()}>Entrar</button>
+  const btnDisabled = () => (
+    <button disabled type="button" data-testid="login-submit-btn">Entrar</button>
+  );
+  const btnAbled = () => (
+    <button type="button" data-testid="login-submit-btn" onClick={() => submitUser()}>Entrar</button>
+  );
   return (
     <div>
       <h2>Login</h2>
