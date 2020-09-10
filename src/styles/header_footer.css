@@ -6,16 +6,16 @@
 }
 
 .header {
+  height: 35px;
   position: fixed;
   width: 100%;
-  height: 35px;
 }
 
 .footer {
   display: flex;
+  margin-bottom: 0;
   position: absolute;
   width: 100%;
-  margin-bottom: 0;
 }
 
 .explore {
