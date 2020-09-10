@@ -23,21 +23,21 @@ function App() {
     <Provider>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/comidas/:id" component={FoodDetail} />
-        <Route path="/comidas" component={MainReceipes} />
-        <Route path="/bebidas" component={Drinks} />
-        <Route path="/bebidas/:id" component={DrinksDetails} />
-        <Route path="/comidas/:id/in-progress" component={FoodInProgress} />
-        <Route path="/bebidas/:id/in-progress" component={DrinkInProgress} />
-        <Route path="/explorar" component={Explore} />
-        <Route path="/explorar/comidas" component={ExploreFood} />
-        <Route path="/explorar/bebidas" component={ExploreDrinks} />
-        <Route path="/explorar/comidas/ingredientes" component={ExploreFoodIng} />
-        <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIng} />
-        <Route path="/explorar/comidas/area" component={ExploreFoodArea} />
-        <Route path="/perfil" component={Profile} />
         <Route path="/receitas-feitas" component={MadeReceipes} />
         <Route path="/receitas-favoritas" component={FavoriteReceipes} />
+        <Route path="/comidas/:id/in-progress" component={FoodInProgress} />
+        <Route path="/comidas/:id" component={FoodDetail} />
+        <Route path="/comidas" component={MainReceipes} />
+        <Route path="/bebidas/:id/in-progress" component={DrinkInProgress} />
+        <Route path="/bebidas/:id" component={DrinksDetails} />
+        <Route path="/bebidas" component={Drinks} />
+        <Route path="/explorar/comidas/ingredientes" component={ExploreFoodIng} />
+        <Route path="/explorar/comidas/area" component={ExploreFoodArea} />
+        <Route path="/explorar/comidas" component={ExploreFood} />
+        <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIng} />
+        <Route path="/explorar/bebidas" component={ExploreDrinks} />
+        <Route path="/explorar" component={Explore} />
+        <Route path="/perfil" component={Profile} />
       </Switch>
     </Provider>
   );
