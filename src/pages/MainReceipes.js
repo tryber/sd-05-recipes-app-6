@@ -4,10 +4,11 @@ import Context from '../context/Context';
 import FoodCard from '../components/FoodCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SearchBar from '../components/SearchBar';
 // import '../styles/App.css';
 
 function MainReceipes() {
-  const { foodData, setFoodData } = useContext(Context);
+  const { foodData, setFoodData, showSearchBar } = useContext(Context);
   useEffect(() => {
     foodApi().then((response) => {
       setFoodData(response);
@@ -21,6 +22,7 @@ function MainReceipes() {
       <header>
         <Header />
       </header>
+      {showSearchBar ? <SearchBar /> : null}
       <div className="foto-nome-comida">
         {foodData.meals.map((food) => <FoodCard food={food} />)}
       </div>
