@@ -1,6 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import { foodApi } from '../service/foodApi';
 import Context from '../context/Context';
+import FoodCard from '../components/FoodCard';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function MainReceipes() {
   const { foodData, setFoodData } = useContext(Context);
@@ -14,7 +17,11 @@ function MainReceipes() {
 
   return (
     <div>
-      {foodData.meals.map((food) => <div>{food.strMeal}</div>)}
+      <Header />
+      <div>
+        {foodData.meals.map((food) => <FoodCard food={food} />)}
+      </div>
+      <Footer />
     </div>
   );
 }
