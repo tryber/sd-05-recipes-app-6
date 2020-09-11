@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 // import '../styles/App.css';
 
 function MainReceipes() {
-  const { drinkData, setDrinkData, showSearchBar } = useContext(Context);
+  const { drinkData, setDrinkData } = useContext(Context);
   useEffect(() => {
     drinkApi().then((response) => {
       setDrinkData(response);
