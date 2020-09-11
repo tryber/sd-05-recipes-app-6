@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function FavoriteReceipes() {
   return (
     <div>
-      <Header />
+      <Header title={'Receitas Favoritas'} showSearchIcon={false} />
       <div>
         <h1>FavoriteReceipes</h1>
       </div>

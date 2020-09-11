@@ -7,19 +7,11 @@ export default function Provider({ children }) {
   const [drinkData, setDrinkData] = useState([]);
   const [showSearchBar, setSearchBar] = useState(false);
 
-  function changeSearchBar(show) {
-    if (show) {
-      setSearchBar(false);
-    } else {
-      setSearchBar(true);
-    }
-  }
-
   const state = {
     foodData,
     setFoodData,
     showSearchBar,
-    changeSearchBar,
+    setSearchBar,
     drinkData,
     setDrinkData,
   };

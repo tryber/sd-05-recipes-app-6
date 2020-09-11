@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function Profile() {
   return (
     <div>
-      <Header />
+      <Header title={'Perfil'} showSearchIcon={false} />
       <div>
         <h1>Profile</h1>
       </div>

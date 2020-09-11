@@ -4,11 +4,10 @@ import Context from '../context/Context';
 import DrinkCard from '../components/DrinkCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import SearchBar from '../components/SearchBar';
 // import '../styles/App.css';
 
 function MainReceipes() {
-  const { drinkData, setDrinkData, showSearchBar } = useContext(Context);
+  const { drinkData, setDrinkData } = useContext(Context);
   useEffect(() => {
     drinkApi().then((response) => {
       setDrinkData(response);
@@ -19,10 +18,7 @@ function MainReceipes() {
 
   return (
     <div>
-      <header>
-        <Header />
-      </header>
-      {showSearchBar ? <SearchBar /> : null}
+      <Header title={'Bebidas'} showSearchIcon />
       <div className="foto-nome-comida">
         {drinkData.drinks.map((drink) => <DrinkCard drink={drink} />)}
       </div>
