@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 import explore from '../images/exploreIcon.svg';
 import drink from '../images/drinkIcon.svg';
 import talher from '../images/mealIcon.svg';
 // import '../styles/header_footer.css';
-import createBrowserHistory from 'history/createBrowserHistory';
 
 function Footer() {
   const btn = () => {
-    const history = createBrowserHistory({ forceRefresh: true })
-    history.push("/explorar")
-  }
+    const history = createBrowserHistory({ forceRefresh: true });
+    history.push('/explorar');
+  };
   return (
     <footer className="footer" data-testid="footer">
       <Link to="/bebidas" data-testid="drinks-bottom-btn">

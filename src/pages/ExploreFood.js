@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { foodRandomApi } from '../service/foodApi';
-import createBrowserHistory from 'history/createBrowserHistory';
+// import createBrowserHistory from 'history/createBrowserHistory';
 // import '../styles/header_footer.css';
 
 function ExploreFood() {
-  const [randomId, setRandomId] = useState("")
+  const [randomId, setRandomId] = useState('');
 
   useEffect(() => {
     foodRandomApi().then((response) => {
-      setRandomId(response['meals'][0].idMeal)
-    })
+      setRandomId(response["meals"][0].idMeal);
+    });
   }, []);
 
   return (

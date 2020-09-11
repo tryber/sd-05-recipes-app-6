@@ -6,12 +6,12 @@ import { drinkRandomApi } from '../service/drinkApi';
 // import '../styles/header_footer.css';
 
 function ExploreDrinks() {
-  const [randomId, setRandomId] = useState("")
+  const [randomId, setRandomId] = useState('');
 
   useEffect(() => {
     drinkRandomApi().then((response) => {
-      setRandomId(response['drinks'][0].idDrink)
-    })
+      setRandomId(response["drinks"][0].idDrink);
+    });
   }, []);
 
   return (
