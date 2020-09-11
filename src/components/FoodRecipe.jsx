@@ -30,3 +30,8 @@ function FoodRecipe({ recipe, checkbox }) {
 }
 
 export default FoodRecipe;
+
+FoodRecipe.propTypes = {
+  recibe: PropTypes.instanceOf(Object).isRequired,
+  checkbox: PropTypes.bool.isRequired,
+};

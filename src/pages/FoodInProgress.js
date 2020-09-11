@@ -22,3 +22,7 @@ function FoodInProgress(props) {
 }
 
 export default FoodInProgress;
+
+FoodInProgress.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
+};

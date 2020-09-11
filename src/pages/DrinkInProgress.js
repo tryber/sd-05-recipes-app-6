@@ -22,3 +22,7 @@ function DrinkInProgress(props) {
 }
 
 export default DrinkInProgress;
+
+DrinkInProgress.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
+};

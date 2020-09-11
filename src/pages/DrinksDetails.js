@@ -17,7 +17,6 @@ function DrinkDetail(props) {
     });
     foodApi().then((response) => {
       setFoodData(response);
-      console.log(response)
     });
   }, []);
 
@@ -27,11 +26,11 @@ function DrinkDetail(props) {
     <div>
       <DrinkRecipe recipe={recipe} />
       <div>
-          <h3>Recomendadas</h3>
-          {foodData.meals.filter((a, index) => index < 6)
-            .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
-          }
-        </div>
+        <h3>Recomendadas</h3>
+        {foodData.meals.filter((a, index) => index < 6)
+          .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
+        }
+      </div>
       <Link to={`/bebidas/${recipe.idDrink}/in-progress`} data-testid="start-recipe-btn">
         Iniciar Receita
       </Link>

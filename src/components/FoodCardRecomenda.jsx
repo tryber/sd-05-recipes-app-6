@@ -24,4 +24,5 @@ export default FoodCardRecomenda;
 
 FoodCardRecomenda.propTypes = {
   food: PropTypes.instanceOf(Object).isRequired,
+  index: PropTypes.number.isRequired,
 };

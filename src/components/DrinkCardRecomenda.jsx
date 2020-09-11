@@ -24,4 +24,5 @@ export default DrinkCardRecomenda;
 
 DrinkCardRecomenda.propTypes = {
   drink: PropTypes.instanceOf(Object).isRequired,
+  index: PropTypes.number.isRequired,
 };

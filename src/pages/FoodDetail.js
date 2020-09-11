@@ -16,9 +16,7 @@ function FoodDetail(props) {
     });
     drinkApi().then((response) => {
       setDrinkData(response);
-      console.log(response)
     });
-    
   }, []);
 
   if (!recipe.idMeal || drinkData.length === 0) return <div>Carregando...</div>;
