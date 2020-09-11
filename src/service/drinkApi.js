@@ -42,3 +42,30 @@ export const drinkRandomApi = () => ( // requisito 75
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
   ))
 );
+
+export const drinkIngredienteApi = (ingrediente) => ( // requisito 15
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingrediente}`)
+    .then((response) => (
+      response
+        .json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+    ))
+);
+
+export const drinkNomeApi = (nome) => ( // requisito 15
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nome}`)
+    .then((response) => (
+      response
+        .json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+    ))
+);
+
+export const drinkLetraApi = (letra) => ( // requisito 15
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letra}`)
+    .then((response) => (
+      response
+        .json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+    ))
+);
