@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { drinkApi } from '../service/drinkApi';
 import Context from '../context/Context';
 import DrinkCard from '../components/DrinkCard';
-import Header from '../components/Header';
+import HeaderDrinks from '../components/HeaderDrinks';
 import Footer from '../components/Footer';
 // import '../styles/App.css';
 
@@ -18,7 +18,7 @@ function MainReceipes() {
 
   return (
     <div>
-      <Header title={'Bebidas'} showSearchIcon />
+      <HeaderDrinks title={'Bebidas'} showSearchIcon />
       <div className="foto-nome-comida">
         {drinkData.drinks.map((drink) => <DrinkCard drink={drink} />)}
       </div>

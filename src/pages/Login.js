@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import createBrowserHistory from 'history/createBrowserHistory';
-import '../styles/App.css';
+// import '../styles/App.css';
 
 export default function Login() {
   const [disableButton, setButton] = useState(true);
