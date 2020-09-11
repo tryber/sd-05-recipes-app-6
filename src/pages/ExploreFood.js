@@ -11,7 +11,7 @@ function ExploreFood() {
 
   useEffect(() => {
     foodRandomApi().then((response) => {
-      setRandomId(response["meals"][0].idMeal);
+      setRandomId(response.meals[0].idMeal);
     });
   }, []);
 

@@ -10,7 +10,7 @@ function ExploreDrinks() {
 
   useEffect(() => {
     drinkRandomApi().then((response) => {
-      setRandomId(response["drinks"][0].idDrink);
+      setRandomId(response.drinks[0].idDrink);
     });
   }, []);
 
