@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function ExploreFoodArea() {
   return (
     <div>
-      <Header title={'Explorar Origem'} showSearchIcon={true} />
+      <Header title={'Explorar Origem'} showSearchIcon />
       <div>
         <h1>ExploreFoodArea</h1>
       </div>

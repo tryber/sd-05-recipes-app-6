@@ -8,7 +8,7 @@ function ExploreFood() {
   return (
     <div>
       <header>
-        <Header />
+        <Header title={"Explorar Comidas"} showSearchIcon={false} />
       </header>
       <div className="explore">
         <Link to="/explorar/comidas/ingredientes" data-testid="explore-by-ingredient">
