@@ -8,7 +8,7 @@ import Context from '../context/Context';
 // import '../styles/header_footer.css';
 
 function Header({ title, showSearchIcon }) {
-  const { showSearchBar, setSearchBar } = useContext(Context);
+  const { showSearchBar } = useContext(Context);
 
   return (
     <div>
