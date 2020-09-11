@@ -8,7 +8,7 @@ function SearchIcon() {
 
   const changeSearchBar = () => {
     setShowSearchBar((prevState) => prevState ? false : true);
-  }
+  };
 
   return (
     <div>

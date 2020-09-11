@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import profile from '../images/profileIcon.svg';
 import SearchIcon from '../components/SearchIcon';
 // import '../styles/header_footer.css';
-import Context from '../context/Context';
 
 function Header({ title, showSearchIcon }) {
   return (

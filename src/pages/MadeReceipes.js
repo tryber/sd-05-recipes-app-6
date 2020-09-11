@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function MadeReceipes() {
   return (
     <div>
-      <Header title={"Receitas Feitas"} showSearchIcon={false} />
+      <Header title={'Receitas Feitas'} showSearchIcon={false} />
       <div>
         <h1>MadeReceipes</h1>
       </div>
