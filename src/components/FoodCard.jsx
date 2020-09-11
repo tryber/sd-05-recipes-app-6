@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../styles/App.css';
+// import '../styles/App.css';
 
 function FoodCard({ food }) {
   return (
