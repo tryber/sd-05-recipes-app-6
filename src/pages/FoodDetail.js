@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
 import { foodIdApi } from '../service/foodApi';
 import IngredientsList from '../components/IngredientsList';
 
@@ -35,7 +34,6 @@ function FoodDetail(props) {
         <p data-testid="instructions">{recipe.strInstructions}</p>
         <button data-testid="finish-recipe-btn">Finalizar Receita</button>
       </div>
-      <Footer />
     </div>
   );
 }
