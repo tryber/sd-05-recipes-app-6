@@ -22,7 +22,6 @@ function MainReceipes() {
       <header>
         <Header title={'Comidas'} showSearchIcon />
       </header>
-      {showSearchBar ? <SearchBar /> : null}
       <div className="foto-nome-comida">
         {foodData.meals.map((food) => <FoodCard food={food} />)}
       </div>
