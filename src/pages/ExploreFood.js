@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 // import '../styles/header_footer.css';
 
 function ExploreFood() {
-  return ( 
+  return (
     <div>
       <header>
         <Header title={'Explorar Comidas'} showSearchIcon={false} />
