@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function FavoriteReceipes() {
   return (
@@ -9,7 +8,6 @@ function FavoriteReceipes() {
       <div>
         <h1>FavoriteReceipes</h1>
       </div>
-      <Footer />
     </div>
   );
 }

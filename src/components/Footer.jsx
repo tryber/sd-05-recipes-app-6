@@ -7,7 +7,7 @@ import talher from '../images/mealIcon.svg';
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" data-testid="footer">
       <Link to="/bebidas" data-testid="drinks-bottom-btn">
         <img src={drink} alt="Drink" />
       </Link>
