@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { foodIdApi } from '../service/foodApi';
 import IngredientsList from '../components/IngredientsList';
@@ -19,7 +18,6 @@ function FoodDetail(props) {
 
   return (
     <div>
-      <Header />
       <div>
         <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={recipe.strMeal} />
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
