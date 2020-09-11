@@ -5,13 +5,7 @@ import PropTypes from 'prop-types';
 function IngredientsList({ recipe, ingredient }) {
   return (
     <div key={recipe[`strIngredient${ingredient}`]}>
-      <input type="checkbox" id={recipe[`strIngredient${ingredient}`]} />
-      <label
-        htmlFor={recipe[`strIngredient${ingredient}`]}
-        data-testid={`${ingredient}-ingredient-step`}
-      >
-        {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
-      </label>
+      - {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
     </div>
   );
 }

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import FoodRecipe from '../components/FoodRecipe';
+import { foodIdApi } from '../service/foodApi';
 
-function FoodInProgress() {
+function FoodInProgress(props) {
+  const [recipe, setRecipe] = useState({});
+
+  useEffect(() => {
+    foodIdApi(props.match.params.id).then((response) => {
+      setRecipe(response.meals[0]);
+    });
+  }, []);
+
+  if (!recipe.idMeal) return <div>Carregando...</div>;
+
   return (
     <div>
-      <div>
-        <h1>FoodInProgress</h1>
-      </div>
+      <FoodRecipe recipe={recipe} checkbox />
+      <button data-testid="finish-recipe-btn">Finalizar Receita</button>
     </div>
   );
 }
