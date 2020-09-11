@@ -20,7 +20,7 @@ function MainReceipes() {
   return (
     <div>
       <header>
-        <Header />
+        <Header title={"Comidas"} showSearchIcon={true} />
       </header>
       {showSearchBar ? <SearchBar /> : null}
       <div className="foto-nome-comida">

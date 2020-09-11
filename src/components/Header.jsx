@@ -1,23 +1,26 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import profile from '../images/profileIcon.svg';
-import search from '../images/searchIcon.svg';
+import SearchIcon from '../components/SearchIcon';
 // import '../styles/header_footer.css';
 import Context from '../context/Context';
 
-function Header() {
-  const { showSearchBar, changeSearchBar } = useContext(Context);
+function Header({ title, showSearchIcon }) {
   return (
     <div className="header">
-      <Link to="/perfil" data-testid="profile-top-btn">
+      <Link to="/perfil">
         <img className="img-perfil" src={profile} alt="Perfil" data-testid="profile-top-btn" />
       </Link>
-      <h2 data-testid="page-title">Perfil</h2>
-      <button onClick={() => changeSearchBar(showSearchBar)} >
-        <img src={search} alt="Procurar" data-testid="search-top-btn" />
-      </button>
+      <h2 data-testid="page-title">{title}</h2>
+      {(showSearchIcon && <SearchIcon />)}
     </div>
   );
 }
 
 export default Header;
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  showSearchIcon: PropTypes.bool.isRequired,
+};

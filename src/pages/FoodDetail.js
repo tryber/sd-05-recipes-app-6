@@ -19,7 +19,6 @@ function FoodDetail(props) {
 
   return (
     <div>
-      <Header />
       <div>
         <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={recipe.strMeal} />
         <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
