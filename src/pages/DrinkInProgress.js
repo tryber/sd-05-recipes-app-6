@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { drinkIdApi } from '../service/drinkApi';
 import DrinkRecipe from '../components/DrinkRecipe';
 

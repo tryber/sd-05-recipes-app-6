@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import IngredientsListCheck from './IngredientsListCheck';
 
@@ -32,6 +33,6 @@ function FoodRecipe({ recipe, checkbox }) {
 export default FoodRecipe;
 
 FoodRecipe.propTypes = {
-  recibe: PropTypes.instanceOf(Object).isRequired,
+  recipe: PropTypes.instanceOf(Object).isRequired,
   checkbox: PropTypes.bool.isRequired,
 };

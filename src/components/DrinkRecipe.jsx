@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import IngredientsListCheck from './IngredientsListCheck';
 
