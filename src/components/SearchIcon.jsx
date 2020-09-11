@@ -4,10 +4,14 @@ import search from '../images/searchIcon.svg';
 import SearchBar from '../components/SearchBar';
 
 function SearchIcon() {
-  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [showSearchBar, setSearchBar] = useState(false);
 
   const changeSearchBar = () => {
-    setShowSearchBar((prevState) => prevState ? false : true);
+    if (showSearchBar) {
+      setSearchBar(false);
+    } else {
+      setSearchBar(true);
+    }
   };
 
   return (
