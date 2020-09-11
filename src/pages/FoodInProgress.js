@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../components/Footer';
 
 function FoodInProgress() {
   return (
@@ -7,7 +6,6 @@ function FoodInProgress() {
       <div>
         <h1>FoodInProgress</h1>
       </div>
-      <Footer />
     </div>
   );
 }
