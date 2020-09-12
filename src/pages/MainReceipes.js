@@ -22,7 +22,9 @@ function MainReceipes() {
         <Header title={'Comidas'} showSearchIcon />
       </header>
       <div className="foto-nome-comida">
-        {foodData.meals.map((food) => <FoodCard food={food} />)}
+        {foodData.meals.filter((meal, index) => index < 12)
+          .map((food) => <FoodCard food={food} />)
+        }
       </div>
       <footer>
         <Footer />
