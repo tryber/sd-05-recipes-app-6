@@ -23,19 +23,14 @@ useEffect(() => {
 function IngredientsListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
 
-  useEffect(() => {
-    const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (localInProgress) { setInProgressRecipes(localInProgress); }
-  }, []);
-
-  const handleDrinkOrMeal = (ingredient, checked, type, id) => {
+  const handleDrinkOrMeal = (value, checked, type, id) => {
     if (inProgressRecipes[type][id] === undefined) {
       inProgressRecipes[type][id] = [];
     }
     if (checked) {
-      inProgressRecipes[type][id].push(ingredient);
+      inProgressRecipes[type][id].push(value);
     } else {
-      const index = inProgressRecipes[type][id].indexOf(ingredient);
+      const index = inProgressRecipes[type][id].indexOf(value);
       inProgressRecipes[type][id].splice(index, 1);
     }
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
