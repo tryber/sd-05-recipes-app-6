@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
-import { drinkCategoryApi, drinkByCategoryApi } from '../service/drinkApi';
+import { drinkCategoryApi, drinkByCategoryApi, drinkApi } from '../service/drinkApi';
 
 export default function CategoryFilters() {
-  const { filtersData, setFilters, setDrinkData } = useContext(Context);
+  const { filtersData, setFilters, setDrinkData, selectedFilter, setSelectedFilter } = useContext(Context);
   useEffect(() => {
     drinkCategoryApi().then((response) => {
       const data = ['All'];
@@ -15,9 +15,24 @@ export default function CategoryFilters() {
   }, []);
 
   const filterByCategory = (category) => {
-    drinkByCategoryApi(category).then((response) => {
-      setDrinkData(response);
-    });
+    if (category === 'All') {
+      setSelectedFilter('All');
+      drinkApi().then((response) => {
+        setDrinkData(response);
+      });
+    } else {
+      if (category === selectedFilter) {
+        setSelectedFilter('All');
+        drinkApi().then((response) => {
+          setDrinkData(response);
+        });
+      } else {
+        setSelectedFilter(category);
+        drinkByCategoryApi(category).then((response) => {
+          setDrinkData(response);
+        });
+      }
+    }
   };
   return (
     <div>

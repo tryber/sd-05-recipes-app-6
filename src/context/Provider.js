@@ -7,6 +7,7 @@ export default function Provider({ children }) {
   const [drinkData, setDrinkData] = useState([]);
   const [showSearchBar, setSearchBar] = useState(false);
   const [filtersData, setFilters] = useState(['All']);
+  const [selectedFilter, setSelectedFilter] = useState('All');
 
   const state = {
     foodData,
@@ -17,6 +18,8 @@ export default function Provider({ children }) {
     setDrinkData,
     filtersData,
     setFilters,
+    selectedFilter,
+    setSelectedFilter,
   };
 
   return (

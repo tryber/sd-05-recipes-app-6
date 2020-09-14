@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import Context from '../context/Context';
-import { foodCategoryApi, foodByCategoryApi } from '../service/foodApi';
+import { foodCategoryApi, foodByCategoryApi, foodApi } from '../service/foodApi';
 
 export default function CategoryFilters() {
-  const { filtersData, setFilters, setFoodData } = useContext(Context);
+  const { filtersData, setFilters, setFoodData, selectedFilter, setSelectedFilter } = useContext(Context);
   useEffect(() => {
     foodCategoryApi().then((response) => {
       const data = ['All'];
@@ -15,9 +15,24 @@ export default function CategoryFilters() {
   }, []);
 
   const filterByCategory = (category) => {
-    foodByCategoryApi(category).then((response) => {
-      setFoodData(response);
-    });
+    if (category === 'All') {
+      setSelectedFilter('All');
+      foodApi().then((response) => {
+        setFoodData(response);
+      });
+    } else {
+      if (category === selectedFilter) {
+        setSelectedFilter('All');
+        foodApi().then((response) => {
+          setFoodData(response);
+        });
+      } else {
+        setSelectedFilter(category);
+        foodByCategoryApi(category).then((response) => {
+          setFoodData(response);
+        });
+      }
+    }
   };
   return (
     <div>
