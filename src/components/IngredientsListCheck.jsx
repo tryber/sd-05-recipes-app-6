@@ -20,31 +20,33 @@ useEffect(() => {
   }
 }, []); */
 
+const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
+  if (inProgressRecipes[type][id] === undefined) {
+    inProgressRecipes[type][id] = [];
+  }
+  if (checked) {
+    inProgressRecipes[type][id].push(value);
+  } else {
+    const index = inProgressRecipes[type][id].indexOf(value);
+    inProgressRecipes[type][id].splice(index, 1);
+  }
+  return inProgressRecipes;
+};
+
 function IngredientsListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
-
-  const handleDrinkOrMeal = (value, checked, type, id) => {
-    if (inProgressRecipes[type][id] === undefined) {
-      inProgressRecipes[type][id] = [];
-    }
-    if (checked) {
-      inProgressRecipes[type][id].push(value);
-    } else {
-      const index = inProgressRecipes[type][id].indexOf(value);
-      inProgressRecipes[type][id].splice(index, 1);
-    }
-    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-    setInProgressRecipes(inProgressRecipes);
-  };
+  let data = {};
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
     if (recipe.idDrink) {
-      handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink);
+      data = handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink, inProgressRecipes);
     }
     if (recipe.idMeal) {
-      handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal);
+      data = handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal, inProgressRecipes);
     }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(data));
+    setInProgressRecipes(data);
   };
 
   return (
