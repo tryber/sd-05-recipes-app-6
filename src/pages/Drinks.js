@@ -4,6 +4,7 @@ import Context from '../context/Context';
 import DrinkCard from '../components/DrinkCard';
 import HeaderDrinks from '../components/HeaderDrinks';
 import Footer from '../components/Footer';
+import CategoryFilters from '../components/DrinksFilters';
 // import '../styles/App.css';
 
 function MainReceipes() {
@@ -19,6 +20,7 @@ function MainReceipes() {
   return (
     <div>
       <HeaderDrinks title={'Bebidas'} showSearchIcon />
+      <CategoryFilters />
       <div className="foto-nome-comida">
         {drinkData.drinks.filter((a, index) => index < 12)
           .map((drink) => <DrinkCard drink={drink} />)
