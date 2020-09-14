@@ -11,12 +11,12 @@ function Explore() {
         <Header title={'Explorar'} showSearchIcon={false} />
       </header>
       <div className="explore">
-        <Link to="/explorar/comidas" data-testid="explore-food">
+        <Link to="/explorar/comidas">
           <button className="btn exp-comida" data-testid="explore-food">
             Explorar Comidas
           </button>
         </Link>
-        <Link to="/explorar/bebidas" data-testid="explore-drinks">
+        <Link to="/explorar/bebidas">
           <button className="btn exp-bebida" data-testid="explore-drinks">
             Explorar Bebidas
           </button>
