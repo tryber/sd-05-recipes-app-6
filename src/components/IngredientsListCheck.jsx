@@ -1,27 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
-import { useEffect } from 'react';
 // import '../styles/App.css';
 
 function IngredientsListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
-  const ingredientNumber = parseInt(ingredient);
-  
-  useEffect(() => {
-    const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (localInProgress) { setInProgressRecipes(localInProgress) };
-  }, []);
+  let checkedIngr = false;
 
-  const handleChange = (event) => {
-    const { value, checked } = event.target;
-    if (recipe.idDrink) {
-      handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink);
-    }
-    if (recipe.idMeal) {
-      handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal);
+  const verifyIngredient = (type, localInProgress, id) => {
+    if (localInProgress[type][id]) {
+      checkedIngr = localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString());
     }
   }
+
+  useEffect(() => {
+    const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (localInProgress) { setInProgressRecipes(localInProgress); }
+    if (recipe.idDrink) {
+      verifyIngredient('cocktails', localInProgress, recipe.idDrink);
+    }
+    if (recipe.idMeal) {
+      verifyIngredient('meals', localInProgress, recipe.idMeal);
+    }
+    ;
+  }, []);
 
   const handleDrinkOrMeal = (ingNumber, checked, type, id) => {
     if (inProgressRecipes[type][id] === undefined) {
@@ -35,13 +37,23 @@ function IngredientsListCheck({ recipe, ingredient }) {
     }
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     setInProgressRecipes(inProgressRecipes);
-  }
+  };
+
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
+    if (recipe.idDrink) {
+      handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink);
+    }
+    if (recipe.idMeal) {
+      handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal);
+    }
+  };
 
   return (
     <div key={recipe[`strIngredient${ingredient}`]}>
       <input
         type="checkbox" id={recipe[`strIngredient${ingredient}`]}
-        value={ingredientNumber} onChange={handleChange}
+        value={ingredient} onChange={handleChange}
       />
       <label
         htmlFor={recipe[`strIngredient${ingredient}`]}
