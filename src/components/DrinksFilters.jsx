@@ -8,7 +8,7 @@ export default function CategoryFilters() {
     drinkCategoryApi().then((response) => {
       const data = ['All'];
       for (let i = 0; i < 5; i += 1) {
-        data.push(response['drinks'][i].strCategory);
+        data.push(response["drinks"][i].strCategory);
       }
       setFilters(data);
     });
@@ -20,4 +20,4 @@ export default function CategoryFilters() {
       ))}
     </div>
   );
-};
+}
