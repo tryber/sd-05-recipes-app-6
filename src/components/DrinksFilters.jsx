@@ -16,9 +16,9 @@ export default function CategoryFilters() {
 
   const filterByCategory = (category) => {
     drinkByCategoryApi(category).then((response) => {
-     setDrinkData(response);
+      setDrinkData(response);
     });
-  }
+  };
   return (
     <div>
       {filtersData.map((filter) => (

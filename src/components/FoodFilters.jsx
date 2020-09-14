@@ -18,7 +18,7 @@ export default function CategoryFilters() {
     foodByCategoryApi(category).then((response) => {
       setFoodData(response);
     });
-  }
+  };
   return (
     <div>
       {filtersData.map((filter) => (
