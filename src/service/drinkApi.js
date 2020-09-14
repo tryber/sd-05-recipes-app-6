@@ -69,3 +69,12 @@ export const drinkLetraApi = (letra) => ( // requisito 15
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
     ))
 );
+
+export const drinkByCategoryApi = (category) => ( // requisito 28
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`)
+    .then((response) => (
+      response
+        .json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+    ))
+);

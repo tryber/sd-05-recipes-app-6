@@ -69,3 +69,12 @@ export const foodLetraApi = (letra) => ( // requisito 14
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
     ))
 );
+
+export const foodByCategoryApi = (category) => ( // requisito 28
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+    .then((response) => (
+      response
+        .json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
+    ))
+);
