@@ -6,6 +6,7 @@ export default function Provider({ children }) {
   const [foodData, setFoodData] = useState([]);
   const [drinkData, setDrinkData] = useState([]);
   const [showSearchBar, setSearchBar] = useState(false);
+  const [inProgressRecipes, setInProgressRecipes] = useState({ cocktails: {}, meals: {} });
 
   const state = {
     foodData,
@@ -14,6 +15,8 @@ export default function Provider({ children }) {
     setSearchBar,
     drinkData,
     setDrinkData,
+    inProgressRecipes,
+    setInProgressRecipes,
   };
 
   return (
