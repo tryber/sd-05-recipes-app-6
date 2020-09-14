@@ -26,8 +26,7 @@ export default function CategoryFilters() {
           key={filter}
           type="button"
           data-testid={`${filter}-category-filter`}
-          value={filter}
-          onClick={(event) => filterByCategory(event.target.value)}
+          onClick={(event) => filterByCategory(event.target.innerHTML)}
         >
           {filter}
         </button>
