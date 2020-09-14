@@ -8,7 +8,7 @@ export default function CategoryFilters() {
     foodCategoryApi().then((response) => {
       const data = ['All'];
       for (let i = 0; i < 5; i += 1) {
-        data.push(response["meals"][i].strCategory);
+        data.push(response.meals[i].strCategory);
       }
       setFilters(data);
     });
