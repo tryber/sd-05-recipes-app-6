@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 // import '../styles/App.css';
@@ -21,16 +21,17 @@ useEffect(() => {
 }, []); */
 
 const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
-  if (inProgressRecipes[type][id] === undefined) {
-    inProgressRecipes[type][id] = [];
+  const data = inProgressRecipes;
+  if (data[type][id] === undefined) {
+    data[type][id] = [];
   }
   if (checked) {
-    inProgressRecipes[type][id].push(value);
+    data[type][id].push(value);
   } else {
-    const index = inProgressRecipes[type][id].indexOf(value);
-    inProgressRecipes[type][id].splice(index, 1);
+    const index = data[type][id].indexOf(value);
+    data[type][id].splice(index, 1);
   }
-  return inProgressRecipes;
+  return data;
 };
 
 function IngredientsListCheck({ recipe, ingredient }) {
