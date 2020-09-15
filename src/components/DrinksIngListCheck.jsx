@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import '../styles/App.css';
 
-const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
+const handleDrink = (value, checked, id, inProgressRecipes) => {
   const data = inProgressRecipes;
-  if (!data[type][id]) {
-    data[type][id] = [];
+  if (!data.cocktails[id]) {
+    datac.cocktails[id] = [];
   }
   if (checked) {
-    data[type][id].push(value);
+    data.cocktails[id].push(value);
   } else {
-    const index = data[type][id].indexOf(value);
-    data[type][id].splice(index, 1);
+    const index = data.cocktails[id].indexOf(value);
+    data.cocktails[id].splice(index, 1);
   }
   return data;
 };
 
-function IngredientsListCheck({ recipe, ingredient }) {
+function DrinkIngListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
   const [checkIngredient, setCheck] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -27,30 +27,18 @@ function IngredientsListCheck({ recipe, ingredient }) {
     const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (localInProgress) {
       setInProgressRecipes(localInProgress);
-      if (recipe.idDrink && localInProgress.cocktails[recipe.idDrink]) {
+      if (localInProgress.cocktails[recipe.idDrink]) {
         setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
       }
-      if (recipe.idMeal && localInProgress.meals[recipe.idMeal]) {
-        setCheck(localInProgress.meals[recipe.idMeal].includes(ingredient.toString()));
-      }
     }
-    checkIngredient ? setClasse('texto-riscado') : setClasse('');
+    (checkIngredient) ? setClasse('texto-riscado') : setClasse('');
     setLoading(false);
   }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
-    checked ? setClasse('texto-riscado') : setClasse('');
-    if (recipe.idDrink) {
-      setInProgressRecipes(
-        handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink, inProgressRecipes)
-      )
-    }
-    if (recipe.idMeal) {
-      setInProgressRecipes(
-        handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal, inProgressRecipes)
-      )
-    }
+    (checked) ? setClasse('texto-riscado') : setClasse('');
+    setInProgressRecipes(handleDrink(value, checked, recipe.idDrink, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
 
@@ -73,9 +61,9 @@ function IngredientsListCheck({ recipe, ingredient }) {
   );
 }
 
-export default IngredientsListCheck;
+export default DrinkIngListCheck;
 
-IngredientsListCheck.propTypes = {
+DrinkIngListCheck.propTypes = {
   recipe: PropTypes.instanceOf(Object).isRequired,
   ingredient: PropTypes.number.isRequired,
 };
