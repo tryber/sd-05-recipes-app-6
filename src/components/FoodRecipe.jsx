@@ -5,30 +5,7 @@ import IngredientsListCheck from './IngredientsListCheck';
 import share from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
-
-const handleClickFavorite = (favorite, recipe) => {
-  let localFavs = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  if (!localFavs) { localFavs = []; }
-  if (favorite) {
-    const value = { id: '', type: '', area: '', category: '', alcoholicOrNot: '', name: '', image: '' };
-    value.id = recipe.idMeal;
-    value.type = 'meal';
-    value.area = recipe.strArea;
-    value.category = recipe.strCategory;
-    value.name = recipe.strMeal;
-    value.image = recipe.strMealThumb;
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs, value]));
-  } else {
-    let index = 0;
-    localFavs.forEach((element, i) => {
-      if (element.id === recipe.idMeal) {
-        index = i;
-      }
-    });
-    localFavs.splice(index, 1);
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs]));
-  }
-};
+import handleClickFavorite from '../service/handleFavoriteFood';
 
 function FoodRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
