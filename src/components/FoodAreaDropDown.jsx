@@ -9,7 +9,7 @@ export default function FoodDropDown() {
       const data = ['All'];
       response.meals.map((meal) => {
         data.push(meal.strArea);
-        return;
+        return '';
       });
       setFoodDropdown(data);
     });
