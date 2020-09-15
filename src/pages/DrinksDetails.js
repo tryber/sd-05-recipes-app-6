@@ -8,6 +8,8 @@ import FoodCardRecomenda from '../components/FoodCardRecomenda';
 
 function DrinkDetail(props) {
   const [recipe, setRecipe] = useState({});
+  const [doneRecipe, setDoneRecipe] = useState(false);
+  const [labelButton, setLabelButton] = useState('Iniciar Receita');
 
   const { foodData, setFoodData } = useContext(Context);
 
@@ -20,6 +22,13 @@ function DrinkDetail(props) {
     });
   }, []);
 
+  useEffect(() => {
+    const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (localInProgress.cocktails[recipe.idDrink]) {
+      setLabelButton('Continuar Receita');
+    }
+  }, [recipe]);
+
   if (!recipe.idDrink || foodData.length === 0) return <div>Carregando...</div>;
 
   return (
@@ -31,9 +40,12 @@ function DrinkDetail(props) {
           .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
         }
       </div>
-      <Link to={`/bebidas/${recipe.idDrink}/in-progress`} data-testid="start-recipe-btn">
-        Iniciar Receita
-      </Link>
+      {!doneRecipe && <Link
+        className="btn-fixed" to={`/bebidas/${recipe.idDrink}/in-progress`}
+        data-testid="start-recipe-btn"
+      >
+        <button>{labelButton}</button>
+      </Link>}
     </div>
   );
 }
