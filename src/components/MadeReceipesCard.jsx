@@ -4,7 +4,7 @@ import React from 'react';
 function MadeReceipesCard() {
   return (
     <div>
-      {/* <img data-testid={`${index}-horizontal-image`} src={recipe.strDrinkThumb} alt={recipe.strDrink} />
+      {/* <img data-testid={`${index}-horizontal-image`} src={recipe.strDrinkThumb} />
       <h2 data-testid={`${index}-horizontal-name`}>{recipe.strDrink}</h2>
       <h4>category</h4>
       <h4>area</h4>
