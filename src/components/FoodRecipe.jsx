@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import IngredientsListCheck from './IngredientsListCheck';
+import share from '../images/shareIcon.svg';
+import whiteHeart from '../images/whiteHeartIcon.svg';
+import blackHeart from '../images/blackHeartIcon.svg';
 
 function FoodRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  const [favoriteImg, setFavoriteImg] = useState(whiteHeart);
+  const [isFavorite, setIsfavorite] = useState(false);
+
+  const handleFavorite = () => {
+    if (isFavorite) {
+      setIsfavorite(false);
+      setFavoriteImg(whiteHeart);
+    } else {
+      setIsfavorite(true);
+      setFavoriteImg(blackHeart);
+    }
+  }
 
   if (!recipe.idMeal) return <div>Carregando...</div>;
 
@@ -12,8 +27,10 @@ function FoodRecipe({ recipe, checkbox }) {
     <div>
       <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={recipe.strMeal} />
       <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <button data-testid="share-btn">share</button>
-      <button data-testid="favorite-btn">Favorite</button>
+      <button data-testid="share-btn"><img src={share} alt="share" /></button>
+      <button data-testid="favorite-btn" onClick={handleFavorite}>
+        <img src={favoriteImg} alt="favorite" />
+      </button>
       <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
       <h3>Ingredients</h3>
       {ingredients.map((ingredient) => {

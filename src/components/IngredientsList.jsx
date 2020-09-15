@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 
 function IngredientsList({ recipe, ingredient }) {
   return (
-    <div key={recipe[`strIngredient${ingredient}`]}>
+    <div
+      key={recipe[`strIngredient${ingredient}`]}
+      data-testid={`${ingredient}-ingredient-name-and-measure`}
+    >
       - {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
     </div>
   );
