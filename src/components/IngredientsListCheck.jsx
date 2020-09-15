@@ -19,9 +19,9 @@ const handleMeal = (value, checked, id, inProgressRecipes) => {
 
 function IngredientsListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
-  const [checkIngredient, setCheck] = useState(false);
+  const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [classe, setClasse] = useState('');
+  const [classeName, setClasse] = useState('');
 
   useEffect(() => {
     const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -36,12 +36,12 @@ function IngredientsListCheck({ recipe, ingredient }) {
   }, []);
 
   useEffect(() => {
-    if (checkIngredient) {
+    if (check) {
       (setClasse('texto-riscado'));
     } else {
       (setClasse(''));
     }
-  }, [checkIngredient]);
+  }, [check]);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
@@ -61,11 +61,11 @@ function IngredientsListCheck({ recipe, ingredient }) {
       <label
         htmlFor={recipe[`strIngredient${ingredient}`]}
         data-testid={`${ingredient}-ingredient-step`}
-        className={classe}
+        className={classeName}
       >
         <input
           type="checkbox" id={recipe[`strIngredient${ingredient}`]}
-          value={ingredient} onChange={handleChange} defaultChecked={checkIngredient}
+          value={ingredient} onChange={handleChange} defaultChecked={check}
         />
         {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
       </label>

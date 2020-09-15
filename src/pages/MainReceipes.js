@@ -23,7 +23,7 @@ function MainReceipes() {
       </header>
       <div className="foto-nome-comida">
         {foodData.meals.filter((meal, index) => index < 12)
-          .map((food) => <FoodCard food={food} />)
+          .map((food, i) => <FoodCard food={food} index={i} />)
         }
       </div>
       <footer>
