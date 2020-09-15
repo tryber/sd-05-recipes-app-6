@@ -21,7 +21,7 @@ function MainReceipes() {
       <HeaderDrinks title={'Bebidas'} showSearchIcon />
       <div className="foto-nome-comida">
         {drinkData.drinks.filter((a, index) => index < 12)
-          .map((drink) => <DrinkCard drink={drink} />)
+          .map((drink, i) => <DrinkCard drink={drink} index={i} />)
         }
       </div>
       <footer>
