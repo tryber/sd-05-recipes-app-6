@@ -19,7 +19,7 @@ function DrinkRecipe({ recipe, checkbox }) {
       setIsfavorite(true);
       setFavoriteImg(blackHeart);
     }
-  }
+  };
 
   if (!recipe.idDrink) return <div>Carregando...</div>;
 

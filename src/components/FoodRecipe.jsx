@@ -19,7 +19,7 @@ function FoodRecipe({ recipe, checkbox }) {
       setIsfavorite(true);
       setFavoriteImg(blackHeart);
     }
-  }
+  };
 
   if (!recipe.idMeal) return <div>Carregando...</div>;
 
