@@ -27,6 +27,10 @@ function FoodDetail(props) {
     if (localInProgress.meals[recipe.idMeal]) {
       setLabelButton('Continuar Receita');
     }
+    const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (localDone) {
+      setDoneRecipe(localDone.find((e) => e.id === recipe.idMeal));
+    }
   }, [recipe]);
 
   if (!recipe.idMeal || drinkData.length === 0) return <div>Carregando...</div>;
