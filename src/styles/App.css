@@ -80,3 +80,7 @@
   margin-top: 200px;
   width: 330px;
 }
+
+.texto-riscado {
+  text-decoration: line-through;
+}
