@@ -31,13 +31,17 @@ function IngredientsListCheck({ recipe, ingredient }) {
         setCheck(localInProgress.meals[recipe.idMeal].includes(ingredient.toString()));
       }
     }
+
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
     if (checkIngredient) {
       (setClasse('texto-riscado'));
     } else {
       (setClasse(''));
     }
-    setLoading(false);
-  }, []);
+  }, [checkIngredient]);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
@@ -57,11 +61,11 @@ function IngredientsListCheck({ recipe, ingredient }) {
       <input
         type="checkbox" id={recipe[`strIngredient${ingredient}`]}
         value={ingredient} onChange={handleChange} defaultChecked={checkIngredient}
-        className={classe}
       />
       <label
         htmlFor={recipe[`strIngredient${ingredient}`]}
         data-testid={`${ingredient}-ingredient-step`}
+        className={classe}
       >
         {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
       </label>
