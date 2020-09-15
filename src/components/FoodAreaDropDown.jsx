@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { foodListAreasApi, foodByAreaApi, foodApi } from '../service/foodApi';
-import { useContext } from 'react';
 import Context from '../context/Context';
 
 export default function FoodDropDown() {
@@ -10,9 +9,10 @@ export default function FoodDropDown() {
       const data = ['All'];
       response.meals.map((meal) => {
         data.push(meal.strArea);
+        return;
       });
       setFoodDropdown(data);
-    })
+    });
   }, []);
 
   const changeHandler = () => {
@@ -27,10 +27,14 @@ export default function FoodDropDown() {
         setFoodData(response);
       });
     }
-  }
+  };
 
   return (
-    <select id="area-dropdown" data-testid="explore-by-area-dropdown" onChange={() => changeHandler()}>
+    <select
+      id="area-dropdown"
+      data-testid="explore-by-area-dropdown"
+      onChange={() => changeHandler()}
+    >
       {foodDropdown.map((option) => (
         <option data-testid={`${option}-option`} value={option}>{option}</option>
       ))}
