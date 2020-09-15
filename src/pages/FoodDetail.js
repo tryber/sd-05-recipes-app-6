@@ -11,6 +11,7 @@ function FoodDetail(props) {
   const [doneRecipe, setDoneRecipe] = useState(false);
   const [labelButton, setLabelButton] = useState('Iniciar Receita');
   const { drinkData, setDrinkData } = useContext(Context);
+
   useEffect(() => {
     foodIdApi(props.match.params.id).then((response) => {
       setRecipe(response.meals[0]);
@@ -19,9 +20,9 @@ function FoodDetail(props) {
       setDrinkData(response);
     });
   }, []);
+
   useEffect(() => {
-    const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (localInProgress.meals[recipe.idMeal]) {
+    if (JSON.parse(localStorage.getItem('inProgressRecipes')).meals[recipe.idMeal]) {
       setLabelButton('Continuar Receita');
     }
     const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -31,7 +32,9 @@ function FoodDetail(props) {
       setDoneRecipe(false);
     }
   }, [recipe]);
+
   if (!recipe.idMeal || drinkData.length === 0) return <div>Carregando...</div>;
+
   return (
     <div>
       <div>
