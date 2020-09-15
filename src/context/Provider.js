@@ -8,6 +8,7 @@ export default function Provider({ children }) {
   const [showSearchBar, setSearchBar] = useState(false);
   const [filtersData, setFilters] = useState(['All']);
   const [selectedFilter, setSelectedFilter] = useState('All');
+  const [foodDropdown, setFoodDropdown] = useState(['All']);
 
   const state = {
     foodData,
@@ -20,6 +21,8 @@ export default function Provider({ children }) {
     setFilters,
     selectedFilter,
     setSelectedFilter,
+    foodDropdown,
+    setFoodDropdown,
   };
 
   return (

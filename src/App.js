@@ -17,6 +17,7 @@ import ExploreFoodArea from './pages/ExploreFoodArea';
 import Profile from './pages/Profile';
 import MadeReceipes from './pages/MadeReceipes';
 import FavoriteReceipes from './pages/FavoriteReceipes';
+import ExploreDrinkArea from './pages/ExploreDrinkArea';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/explorar/comidas/area" component={ExploreFoodArea} />
         <Route path="/explorar/comidas" component={ExploreFood} />
         <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIng} />
+        <Route path="/explorar/bebidas/area" component={ExploreDrinkArea} />
         <Route path="/explorar/bebidas" component={ExploreDrinks} />
         <Route path="/explorar" component={Explore} />
         <Route path="/perfil" component={Profile} />
