@@ -17,7 +17,7 @@ const handleClickFavorite = (favorite, recipe) => {
     value.category = recipe.strCategory;
     value.name = recipe.strDrink;
     value.image = recipe.strDrinkThumb;
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs, value]));   
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs, value]));
   } else {
     let index = 0;
     localFavs.forEach((element, i) => {
