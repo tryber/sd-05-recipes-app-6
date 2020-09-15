@@ -3,16 +3,9 @@ import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import '../styles/App.css';
 
-const verifyIngredient = (type, id, ingredient, localInProgress) => {
-  if (localInProgress[type][id]) {
-    return localInProgress[type][id].includes(ingredient.toString());
-  }
-  return false;
-};
-
 const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
   const data = inProgressRecipes;
-  if (data[type][id] === undefined) {
+  if (!data[type][id]) {
     data[type][id] = [];
   }
   if (checked) {
@@ -29,31 +22,40 @@ function IngredientsListCheck({ recipe, ingredient }) {
   const [checkIngredient, setCheck] = useState(false);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
+  const [classe, setClasse] = useState('');
 
   useEffect(() => {
     const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    console.log(localInProgress)
     if (localInProgress) {
       setInProgressRecipes(localInProgress);
-      if (localInProgress.cocktails[recipe.idDrink]) {
-        setCheck(verifyIngredient('cocktails', recipe.idDrink, ingredient, localInProgress));
+      setData(localInProgress);
+      if (recipe.idDrink && localInProgress.cocktails[recipe.idDrink]) {
+        setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
       }
-      if (localInProgress.meals[recipe.idMeal]) {
-        setCheck(verifyIngredient('meals', recipe.idMeal, ingredient, localInProgress));
+      console.log(localInProgress);
+      if (recipe.idMeal && localInProgress.meals[recipe.idMeal]) {
+        setCheck(localInProgress.meals[recipe.idMeal].includes(ingredient.toString()));
       }
     }
+    checkIngredient ? setClasse('texto-riscado') : setClasse('');
     setLoading(false);
   }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
+    checked ? setClasse('texto-riscado') : setClasse('');
     if (recipe.idDrink) {
-      setData(handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink, inProgressRecipes));
+      setInProgressRecipes(
+        handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink, inProgressRecipes)
+      );
     }
     if (recipe.idMeal) {
-      setData(handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal, inProgressRecipes));
+      setInProgressRecipes(
+        handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal, inProgressRecipes)
+      );
     }
-    localStorage.setItem('inProgressRecipes', JSON.stringify(data));
-    setInProgressRecipes(data);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
 
   if (loading) return <div>Carregando...</div>;
@@ -63,7 +65,7 @@ function IngredientsListCheck({ recipe, ingredient }) {
       <input
         type="checkbox" id={recipe[`strIngredient${ingredient}`]}
         value={ingredient} onChange={handleChange} defaultChecked={checkIngredient}
-        className="texto-riscado"
+        className={classe}
       />
       <label
         htmlFor={recipe[`strIngredient${ingredient}`]}
