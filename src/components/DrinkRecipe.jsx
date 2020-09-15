@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import DrinkIngListCheck from './DrinksIngListCheck';
@@ -6,20 +6,56 @@ import share from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 
+const handleClickFavorite = (favorite, recipe) => {
+  let localFavs = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (!localFavs) { localFavs = []; }
+  if (favorite) {
+    const value = { id: '', type: '', area: '', category: '', alcoholicOrNot: '', name: '', image: '' };
+    value.id = recipe.idDrink;
+    value.type = 'cocktail';
+    value.alcoholicOrNot = recipe.strAlcoholic;
+    value.category = recipe.strCategory;
+    value.name = recipe.strDrink;
+    value.image = recipe.strDrinkThumb;
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs, value]));   
+  } else {
+    let index = 0;
+    localFavs.forEach((element, i) => {
+      if (element.id === recipe.idDrink) {
+        index = i;
+      }
+    });
+    localFavs.splice(index, 1);
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs]));
+  }
+};
+
 function DrinkRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const [favoriteImg, setFavoriteImg] = useState(whiteHeart);
   const [isFavorite, setIsfavorite] = useState(false);
 
   const handleFavorite = () => {
-    if (isFavorite) {
-      setIsfavorite(false);
-      setFavoriteImg(whiteHeart);
-    } else {
-      setIsfavorite(true);
+    if (!isFavorite) {
+      handleClickFavorite(true, recipe);
       setFavoriteImg(blackHeart);
+      setIsfavorite(true);
+    } else {
+      handleClickFavorite(false, recipe);
+      setFavoriteImg(whiteHeart);
+      setIsfavorite(false);
     }
   };
+
+  useEffect(() => {
+    const favoritos = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    favoritos.forEach((element) => {
+      if (element.id === recipe.idDrink) {
+        setIsfavorite(true);
+        setFavoriteImg(blackHeart);
+      }
+    });
+  }, []);
 
   if (!recipe.idDrink) return <div>Carregando...</div>;
 
