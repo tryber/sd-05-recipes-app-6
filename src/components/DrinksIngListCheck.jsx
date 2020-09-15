@@ -31,13 +31,13 @@ function DrinkIngListCheck({ recipe, ingredient }) {
         setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
       }
     }
-    (checkIngredient) ? setClasse('texto-riscado') : setClasse('');
+    checkIngredient ? (setClasse('texto-riscado')) : (setClasse(''));
     setLoading(false);
   }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
-    (checked) ? setClasse('texto-riscado') : setClasse('');
+    checked ? (setClasse('texto-riscado')) : (setClasse(''));
     setInProgressRecipes(handleDrink(value, checked, recipe.idDrink, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };

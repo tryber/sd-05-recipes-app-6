@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import '../styles/App.css';
 
-const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
+const handleMeal = (value, checked, id, inProgressRecipes) => {
   const data = inProgressRecipes;
-  if (!data[type][id]) {
-    data[type][id] = [];
+  if (!data.meals[id]) {
+    data.meals[id] = [];
   }
   if (checked) {
-    data[type][id].push(value);
+    data.meals[id].push(value);
   } else {
-    const index = data[type][id].indexOf(value);
-    data[type][id].splice(index, 1);
+    const index = data.meals[id].indexOf(value);
+    data.meals[id].splice(index, 1);
   }
   return data;
 };
@@ -27,30 +27,18 @@ function IngredientsListCheck({ recipe, ingredient }) {
     const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (localInProgress) {
       setInProgressRecipes(localInProgress);
-      if (recipe.idDrink && localInProgress.cocktails[recipe.idDrink]) {
-        setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
-      }
-      if (recipe.idMeal && localInProgress.meals[recipe.idMeal]) {
+      if (localInProgress.meals[recipe.idMeal]) {
         setCheck(localInProgress.meals[recipe.idMeal].includes(ingredient.toString()));
       }
     }
-    checkIngredient ? setClasse('texto-riscado') : setClasse('');
+    checkIngredient ? (setClasse('texto-riscado')) : (setClasse(''));
     setLoading(false);
   }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
-    checked ? setClasse('texto-riscado') : setClasse('');
-    if (recipe.idDrink) {
-      setInProgressRecipes(
-        handleDrinkOrMeal(value, checked, 'cocktails', recipe.idDrink, inProgressRecipes)
-      )
-    }
-    if (recipe.idMeal) {
-      setInProgressRecipes(
-        handleDrinkOrMeal(value, checked, 'meals', recipe.idMeal, inProgressRecipes)
-      )
-    }
+    checked ? (setClasse('texto-riscado')) : (setClasse(''));
+    setInProgressRecipes(handleMeal(value, checked, recipe.idMeal, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
 
