@@ -31,7 +31,7 @@ function DrinkRecipe({ recipe, checkbox }) {
       <button data-testid="favorite-btn" onClick={handleFavorite}>
         <img src={favoriteImg} alt="favorite" />
       </button>
-      <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
+      <h4 data-testid="recipe-category">{recipe.strAlcoholic}</h4>
       <h3>Ingredients</h3>
       {ingredients.map((ingredient) => {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {

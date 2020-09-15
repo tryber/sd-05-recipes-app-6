@@ -58,15 +58,15 @@ function IngredientsListCheck({ recipe, ingredient }) {
 
   return (
     <div key={recipe[`strIngredient${ingredient}`]}>
-      <input
-        type="checkbox" id={recipe[`strIngredient${ingredient}`]}
-        value={ingredient} onChange={handleChange} defaultChecked={checkIngredient}
-      />
       <label
         htmlFor={recipe[`strIngredient${ingredient}`]}
         data-testid={`${ingredient}-ingredient-step`}
         className={classe}
       >
+        <input
+          type="checkbox" id={recipe[`strIngredient${ingredient}`]}
+          value={ingredient} onChange={handleChange} defaultChecked={checkIngredient}
+        />
         {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
       </label>
     </div>
