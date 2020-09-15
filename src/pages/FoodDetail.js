@@ -11,7 +11,6 @@ function FoodDetail(props) {
   const [doneRecipe, setDoneRecipe] = useState(false);
   const [labelButton, setLabelButton] = useState('Iniciar Receita');
   const { drinkData, setDrinkData } = useContext(Context);
-
   useEffect(() => {
     foodIdApi(props.match.params.id).then((response) => {
       setRecipe(response.meals[0]);
@@ -28,6 +27,8 @@ function FoodDetail(props) {
     const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
     if (localDone) {
       setDoneRecipe(localDone.find((e) => e.id === recipe.idMeal));
+    } else {
+      setDoneRecipe(false);
     }
   }, [recipe]);
 
@@ -40,12 +41,10 @@ function FoodDetail(props) {
           data-testid="video" width="420" height="315"
           src={`https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}`}
         />
-        <div>
-          <h3>Recomendadas</h3>
-          {drinkData.drinks.filter((a, index) => index < 6)
-            .map((drink, i) => <DrinkCardRecomenda drink={drink} index={i} />)
-          }
-        </div>
+        <h3>Recomendadas</h3>
+        {drinkData.drinks.filter((a, index) => index < 6)
+          .map((drink, i) => <DrinkCardRecomenda drink={drink} index={i} />)
+        }
         {!doneRecipe && <Link
           className="btn-fixed" to={`/comidas/${recipe.idMeal}/in-progress`}
           data-testid="start-recipe-btn"

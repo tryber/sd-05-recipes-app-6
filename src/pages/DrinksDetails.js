@@ -27,6 +27,12 @@ function DrinkDetail(props) {
     if (localInProgress.cocktails[recipe.idDrink]) {
       setLabelButton('Continuar Receita');
     }
+    const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (localDone) {
+      setDoneRecipe(localDone.find((e) => e.id === recipe.idDrink));
+    } else {
+      setDoneRecipe(false);
+    }
   }, [recipe]);
 
   if (!recipe.idDrink || foodData.length === 0) return <div>Carregando...</div>;
