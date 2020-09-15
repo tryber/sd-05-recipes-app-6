@@ -1,24 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 // import '../styles/App.css';
 
-/* const verifyIngredient = (type, localInProgress, id) => {
+const verifyIngredient = (type, id, ingredient, localInProgress) => {
   if (localInProgress[type][id]) {
-    checkedIngr = localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString());
+    return localInProgress[type][id].includes(ingredient.toString());
   }
+  return false;
 };
 
-useEffect(() => {
-  const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (localInProgress) { setInProgressRecipes(localInProgress); }
-  if (recipe.idDrink) {
-    verifyIngredient('cocktails', localInProgress, recipe.idDrink);
-  }
-  if (recipe.idMeal) {
-    verifyIngredient('meals', localInProgress, recipe.idMeal);
-  }
-}, []); */
+
 
 const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
   const data = inProgressRecipes;
@@ -37,6 +29,21 @@ const handleDrinkOrMeal = (value, checked, type, id, inProgressRecipes) => {
 function IngredientsListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
   let data = {};
+  let checkIngredient = false;
+
+  useEffect(() => {
+    const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    console.log(localInProgress)
+    if (localInProgress) {
+      setInProgressRecipes(localInProgress);
+      if (localInProgress.cocktails[recipe.idDrink]) {
+        checkIngredient = verifyIngredient('cocktails', recipe.idDrink, ingredient, localInProgress);
+      }
+      if (localInProgress.cocktails[recipe.idMeal]) {
+        checkIngredient = verifyIngredient('meals', localInProgress, recipe.idMeal);
+      }
+    } 
+  }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
