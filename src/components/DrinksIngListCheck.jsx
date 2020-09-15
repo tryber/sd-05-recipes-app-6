@@ -32,10 +32,10 @@ function DrinkIngListCheck({ recipe, ingredient }) {
       }
     }
     if (checkIngredient) {
-      (setClasse('texto-riscado'))
+      (setClasse('texto-riscado'));
     } else {
       (setClasse(''));
-    } 
+    }
     setLoading(false);
   }, []);
 

@@ -32,7 +32,7 @@ function IngredientsListCheck({ recipe, ingredient }) {
       }
     }
     if (checkIngredient) {
-      (setClasse('texto-riscado'))
+      (setClasse('texto-riscado'));
     } else {
       (setClasse(''));
     }
