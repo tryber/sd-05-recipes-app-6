@@ -31,7 +31,6 @@ function FoodDetail(props) {
       setDoneRecipe(false);
     }
   }, [recipe]);
-
   if (!recipe.idMeal || drinkData.length === 0) return <div>Carregando...</div>;
   return (
     <div>
