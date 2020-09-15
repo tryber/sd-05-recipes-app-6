@@ -14,7 +14,7 @@ function Header({ title, showSearchIcon }) {
     <div>
       <div className="header">
         <Link to="/perfil">
-          <button>
+          <button src={profile}>
             <img
               className="img-perfil" src={profile} alt="Perfil"
               data-testid="profile-top-btn"
