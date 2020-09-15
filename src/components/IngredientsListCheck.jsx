@@ -31,13 +31,21 @@ function IngredientsListCheck({ recipe, ingredient }) {
         setCheck(localInProgress.meals[recipe.idMeal].includes(ingredient.toString()));
       }
     }
-    checkIngredient ? (setClasse('texto-riscado')) : (setClasse(''));
+    if (checkIngredient) {
+      (setClasse('texto-riscado'))
+    } else {
+      (setClasse(''));
+    }
     setLoading(false);
   }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
-    checked ? (setClasse('texto-riscado')) : (setClasse(''));
+    if (checked) {
+      setClasse('texto-riscado');
+    } else {
+      setClasse('');
+    }
     setInProgressRecipes(handleMeal(value, checked, recipe.idMeal, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };

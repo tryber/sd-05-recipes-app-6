@@ -6,7 +6,7 @@ import '../styles/App.css';
 const handleDrink = (value, checked, id, inProgressRecipes) => {
   const data = inProgressRecipes;
   if (!data.cocktails[id]) {
-    datac.cocktails[id] = [];
+    data.cocktails[id] = [];
   }
   if (checked) {
     data.cocktails[id].push(value);
@@ -31,13 +31,21 @@ function DrinkIngListCheck({ recipe, ingredient }) {
         setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
       }
     }
-    checkIngredient ? (setClasse('texto-riscado')) : (setClasse(''));
+    if (checkIngredient) {
+      (setClasse('texto-riscado'))
+    } else {
+      (setClasse(''));
+    } 
     setLoading(false);
   }, []);
 
   const handleChange = (event) => {
     const { value, checked } = event.target;
-    checked ? (setClasse('texto-riscado')) : (setClasse(''));
+    if (checked) {
+      setClasse('texto-riscado');
+    } else {
+      setClasse('');
+    }
     setInProgressRecipes(handleDrink(value, checked, recipe.idDrink, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
