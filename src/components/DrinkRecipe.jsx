@@ -26,12 +26,14 @@ function DrinkRecipe({ recipe, checkbox }) {
 
   useEffect(() => {
     const favoritos = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    favoritos.forEach((element) => {
-      if (element.id === recipe.idDrink) {
-        setIsfavorite(true);
-        setFavoriteImage(blackHeart);
-      }
-    });
+    if (favoritos) {
+      favoritos.forEach((element) => {
+        if (element.id === recipe.idDrink) {
+          setIsfavorite(true);
+          setFavoriteImage(blackHeart);
+        }
+      });
+    }
   }, []);
 
   if (!recipe.idDrink) return <div>Carregando...</div>;
