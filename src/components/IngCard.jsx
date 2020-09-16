@@ -10,7 +10,7 @@ export default function IngCard({ ing, index }) {
     drinkIngredienteApi(busca).then((response) => {
       setDrinkData(response);
     });
-  }
+  };
   return (
     <Link to={'/bebidas'} onClick={(event) => filter(event.target.name) || setStopApi(true)}>
       <div className="drink-card" data-testid={`${index}-ingredient-card`}>
