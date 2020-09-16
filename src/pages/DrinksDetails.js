@@ -23,7 +23,7 @@ function DrinkDetail(props) {
   }, []);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('inProgressRecipes'))){
+    if (JSON.parse(localStorage.getItem('inProgressRecipes'))) {
       if (JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[recipe.idDrink]) {
         setLabelButton('Continuar Receita');
       }
