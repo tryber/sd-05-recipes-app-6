@@ -16,9 +16,7 @@ function FoodDetail(props) {
     foodIdApi(props.match.params.id).then((response) => {
       setRecipe(response.meals[0]);
     });
-    drinkApi().then((response) => {
-      setDrinkData(response);
-    });
+    drinkApi().then((response) => { setDrinkData(response); });
   }, []);
 
   useEffect(() => {
