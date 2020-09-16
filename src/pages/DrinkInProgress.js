@@ -24,8 +24,7 @@ function DrinkInProgress(props) {
   }, [recipe]);
 
   const handleClick = () => {
-    
-    
+    console.log('teste');
   };
   
   if (!recipe.idDrink) return <div>Carregando...</div>;

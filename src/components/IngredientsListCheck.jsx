@@ -18,7 +18,7 @@ const handleMeal = (value, checked, id, inProgressRecipes) => {
 };
 
 function IngredientsListCheck({ recipe, ingredient }) {
-  const { inProgressRecipes, setInProgressRecipes } = useContext(Context);
+  const { inProgressRecipes, setInProgressRecipes, qtdeIngredients, setBtnDisabled } = useContext(Context);
   const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(true);
   const [classeName, setClasse] = useState('');
@@ -43,15 +43,20 @@ function IngredientsListCheck({ recipe, ingredient }) {
     }
   }, [check]);
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     const { value, checked } = event.target;
     if (checked) {
       setClasse('texto-riscado');
     } else {
       setClasse('');
     }
-    setInProgressRecipes(handleMeal(value, checked, recipe.idMeal, inProgressRecipes));
+    await setInProgressRecipes(handleMeal(value, checked, recipe.idMeal, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    if (inProgressRecipes.meals[recipe.idMeal].length === qtdeIngredients) {
+      setBtnDisabled(false);
+    } else {
+      setBtnDisabled(true);
+    }
   };
 
   if (loading) return <div>Carregando...</div>;
