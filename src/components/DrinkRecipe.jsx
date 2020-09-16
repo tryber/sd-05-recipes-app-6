@@ -26,12 +26,14 @@ function DrinkRecipe({ recipe, checkbox }) {
 
   useEffect(() => {
     const favoritos = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    favoritos.forEach((element) => {
-      if (element.id === recipe.idDrink) {
-        setIsfavorite(true);
-        setFavoriteImage(blackHeart);
-      }
-    });
+    if (favoritos) {
+      favoritos.forEach((element) => {
+        if (element.id === recipe.idDrink) {
+          setIsfavorite(true);
+          setFavoriteImage(blackHeart);
+        }
+      });
+    }
   }, []);
 
   if (!recipe.idDrink) return <div>Carregando...</div>;
@@ -40,17 +42,17 @@ function DrinkRecipe({ recipe, checkbox }) {
     <div>
       <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={recipe.strDrink} />
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <button data-testid="share-btn"><img src={share} alt="share" /></button>
-      <button data-testid="favorite-btn" onClick={handleFavorite}>
+      <button data-testid="share-btn" src={share}><img src={share} alt="share" /></button>
+      <button data-testid="favorite-btn" onClick={handleFavorite} src={favoriteImg}>
         <img src={favoriteImg} alt="favorite" />
       </button>
       <h4 data-testid="recipe-category">{recipe.strAlcoholic}</h4>
       <h3>Ingredients</h3>
-      {ingredients.map((ingredient) => {
+      {ingredients.map((ingredient, i) => {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {
-          return <IngredientsList recipe={recipe} ingredient={ingredient} />;
+          return <IngredientsList recipe={recipe} ingredient={ingredient} index={i} />;
         } else if (recipe[`strIngredient${ingredient}`]) {
-          return <DrinkIngListCheck recipe={recipe} ingredient={ingredient} />;
+          return <DrinkIngListCheck recipe={recipe} ingredient={ingredient} index={i} />;
         }
         return null;
       })}

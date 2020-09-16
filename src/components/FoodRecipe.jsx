@@ -26,12 +26,14 @@ function FoodRecipe({ recipe, checkbox }) {
 
   useEffect(() => {
     const favoritos = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    favoritos.forEach((element) => {
-      if (element.id === recipe.idMeal) {
-        setIsfavorite(true);
-        setFavoriteImg(blackHeart);
-      }
-    });
+    if (favoritos) {
+      favoritos.forEach((element) => {
+        if (element.id === recipe.idMeal) {
+          setIsfavorite(true);
+          setFavoriteImg(blackHeart);
+        }
+      });
+    }
   }, []);
 
   if (!recipe.idMeal) return <div>Carregando...</div>;
@@ -40,8 +42,8 @@ function FoodRecipe({ recipe, checkbox }) {
     <div>
       <img data-testid="recipe-photo" src={recipe.strMealThumb} alt={recipe.strMeal} />
       <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <button data-testid="share-btn"><img src={share} alt="share" /></button>
-      <button data-testid="favorite-btn" onClick={handleFavorite}>
+      <button data-testid="share-btn" src={share}><img src={share} alt="share" /></button>
+      <button data-testid="favorite-btn" src={favoriteImg} onClick={handleFavorite}>
         <img src={favoriteImg} alt="favorite" />
       </button>
       <h4 data-testid="recipe-category">{recipe.strCategory}</h4>

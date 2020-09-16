@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { drinkIdApi } from '../service/drinkApi';
 import DrinkRecipe from '../components/DrinkRecipe';
 import Context from '../context/Context';
+import handleClickDone from '../service/handleDoneDrink';
 
 function DrinkInProgress(props) {
   const [recipe, setRecipe] = useState({});
+  const [redirect, setRedirect] = useState(false);
   const { setQtdeIngredients, btnDisabled } = useContext(Context);
 
   useEffect(() => {
@@ -24,15 +27,20 @@ function DrinkInProgress(props) {
   }, [recipe]);
 
   const handleClick = () => {
-    console.log('teste');
+    handleClickDone(recipe);
+    setRedirect(true);
   };
 
   if (!recipe.idDrink) return <div>Carregando...</div>;
+  if (redirect) return <Redirect to="/receitas-feitas" />;
 
   return (
     <div>
       <DrinkRecipe recipe={recipe} checkbox />
-      <button data-testid="finish-recipe-btn" onClick={handleClick} disabled={btnDisabled}>
+      <button
+        className="btn-fixed" data-testid="finish-recipe-btn"
+        onClick={handleClick} disabled={btnDisabled}
+      >
         Finalizar Receita
       </button>
     </div>
