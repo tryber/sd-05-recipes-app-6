@@ -9,6 +9,11 @@ export default function Provider({ children }) {
   const [inProgressRecipes, setInProgressRecipes] = useState({ cocktails: {}, meals: {} });
   const [qtdeIng, setQtdeIngredients] = useState([]);
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [filtersData, setFilters] = useState(['All']);
+  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [foodDropdown, setFoodDropdown] = useState(['All']);
+  const [drinkIng, setDrinkIng] = useState([]);
+  const [stopApi, setStopApi] = useState(false);
 
   const state = {
     foodData,
@@ -23,6 +28,16 @@ export default function Provider({ children }) {
     setQtdeIngredients,
     btnDisabled,
     setBtnDisabled,
+    filtersData,
+    setFilters,
+    selectedFilter,
+    setSelectedFilter,
+    foodDropdown,
+    setFoodDropdown,
+    drinkIng,
+    setDrinkIng,
+    stopApi,
+    setStopApi,
   };
 
   return (
