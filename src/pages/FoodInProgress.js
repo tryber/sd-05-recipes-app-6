@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import FoodRecipe from '../components/FoodRecipe';
 import { foodIdApi } from '../service/foodApi';
 import Context from '../context/Context';
@@ -41,6 +41,7 @@ function FoodInProgress(props) {
 
 export default FoodInProgress;
 
-FoodInProgress.propTypes = {
+/* FoodInProgress.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
 };
+ */

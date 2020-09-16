@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { drinkIdApi } from '../service/drinkApi';
 import DrinkRecipe from '../components/DrinkRecipe';
 import Context from '../context/Context';
@@ -26,7 +26,7 @@ function DrinkInProgress(props) {
   const handleClick = () => {
     console.log('teste');
   };
-  
+
   if (!recipe.idDrink) return <div>Carregando...</div>;
 
   return (
@@ -41,6 +41,6 @@ function DrinkInProgress(props) {
 
 export default DrinkInProgress;
 
-DrinkInProgress.propTypes = {
+/* DrinkInProgress.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
-};
+}; */

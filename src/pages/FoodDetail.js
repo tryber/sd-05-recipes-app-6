@@ -22,7 +22,7 @@ function FoodDetail(props) {
   }, []);
 
   useEffect(() => {
-    if(JSON.parse(localStorage.getItem('inProgressRecipes'))){
+    if (JSON.parse(localStorage.getItem('inProgressRecipes'))){
       if (JSON.parse(localStorage.getItem('inProgressRecipes')).meals[recipe.idMeal]) {
         setLabelButton('Continuar Receita');
       }
@@ -39,23 +39,21 @@ function FoodDetail(props) {
 
   return (
     <div>
-      <div>
-        <FoodRecipe recipe={recipe} />
-        <iframe
-          data-testid="video" width="420" height="315"
-          src={`https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}`}
-        />
-        <h3>Recomendadas</h3>
-        {drinkData.drinks.filter((a, index) => index < 6)
-          .map((drink, i) => <DrinkCardRecomenda drink={drink} index={i} />)
-        }
-        {!doneRecipe && <Link
-          className="btn-fixed" to={`/comidas/${recipe.idMeal}/in-progress`}
-          data-testid="start-recipe-btn"
-        >
-          <button>{labelButton}</button>
-        </Link>}
-      </div>
+      <FoodRecipe recipe={recipe} />
+      <iframe
+        data-testid="video" width="420" height="315"
+        src={`https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}`}
+      />
+      <h3>Recomendadas</h3>
+      {drinkData.drinks.filter((a, index) => index < 6)
+        .map((drink, i) => <DrinkCardRecomenda drink={drink} index={i} />)
+      }
+      {!doneRecipe && <Link
+        className="btn-fixed" to={`/comidas/${recipe.idMeal}/in-progress`}
+        data-testid="start-recipe-btn"
+      >
+        <button>{labelButton}</button>
+      </Link>}
     </div>
   );
 }

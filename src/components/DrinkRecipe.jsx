@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import DrinkIngListCheck from './DrinksIngListCheck';
@@ -6,21 +6,20 @@ import share from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import handleClickFavorite from '../service/handleFavoriteDrink';
-import Context from '../context/Context';
 
 function DrinkRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  const [favoriteImg, setFavoriteImg] = useState(whiteHeart);
+  const [favoriteImg, setFavoriteImage] = useState(whiteHeart);
   const [isFavorite, setIsfavorite] = useState(false);
 
   const handleFavorite = () => {
     if (!isFavorite) {
       handleClickFavorite(true, recipe);
-      setFavoriteImg(blackHeart);
+      setFavoriteImage(blackHeart);
       setIsfavorite(true);
     } else {
       handleClickFavorite(false, recipe);
-      setFavoriteImg(whiteHeart);
+      setFavoriteImage(whiteHeart);
       setIsfavorite(false);
     }
   };
@@ -30,7 +29,7 @@ function DrinkRecipe({ recipe, checkbox }) {
     favoritos.forEach((element) => {
       if (element.id === recipe.idDrink) {
         setIsfavorite(true);
-        setFavoriteImg(blackHeart);
+        setFavoriteImage(blackHeart);
       }
     });
   }, []);
@@ -47,7 +46,7 @@ function DrinkRecipe({ recipe, checkbox }) {
       </button>
       <h4 data-testid="recipe-category">{recipe.strAlcoholic}</h4>
       <h3>Ingredients</h3>
-      {ingredients.map((ingredient, index) => {
+      {ingredients.map((ingredient) => {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {
           return <IngredientsList recipe={recipe} ingredient={ingredient} />;
         } else if (recipe[`strIngredient${ingredient}`]) {

@@ -18,7 +18,7 @@ const handleDrink = (value, checked, id, inProgressRecipes) => {
 };
 
 function DrinkIngListCheck({ recipe, ingredient }) {
-  const { inProgressRecipes, setInProgressRecipes, qtdeIngredients, setBtnDisabled } = useContext(Context);
+  const { inProgressRecipes, setInProgressRecipes, qtdeIng, setBtnDisabled } = useContext(Context);
   const [checkIngredient, setCheck] = useState(false);
   const [loading, setLoading] = useState(true);
   const [classe, setClasse] = useState('');
@@ -51,7 +51,7 @@ function DrinkIngListCheck({ recipe, ingredient }) {
     }
     await setInProgressRecipes(handleDrink(value, checked, recipe.idDrink, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-    if (inProgressRecipes.cocktails[recipe.idDrink].length === qtdeIngredients) {
+    if (inProgressRecipes.cocktails[recipe.idDrink].length === qtdeIng) {
       setBtnDisabled(false);
     } else {
       setBtnDisabled(true);
