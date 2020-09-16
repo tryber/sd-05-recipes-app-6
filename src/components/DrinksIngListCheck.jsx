@@ -17,6 +17,14 @@ const handleDrink = (value, checked, id, inProgressRecipes) => {
   return data;
 };
 
+const handleCheckBoxChange = (checked) => {
+  if (checked) {
+    return 'texto-riscado';
+  } else {
+    return '';
+  }
+}
+
 function DrinkIngListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes, qtdeIng, setBtnDisabled } = useContext(Context);
   const [checkIngredient, setCheck] = useState(false);
@@ -35,16 +43,16 @@ function DrinkIngListCheck({ recipe, ingredient }) {
   }, []);
 
   useEffect(() => {
-    (checkIngredient) ? (setClasse('texto-riscado')) : (setClasse(''));
+    if (checkIngredient) {
+      (setClasse('texto-riscado'));
+    } else {
+      (setClasse(''));
+    }
   }, [checkIngredient]);
 
   const handleChange = async (event) => {
     const { value, checked } = event.target;
-    if (checked) {
-      setClasse('texto-riscado');
-    } else {
-      setClasse('');
-    }
+    setClasse(handleCheckBoxChange(checked));
     await setInProgressRecipes(handleDrink(value, checked, recipe.idDrink, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     if (inProgressRecipes.cocktails[recipe.idDrink].length === qtdeIng) {
