@@ -7,6 +7,7 @@ export default function Provider({ children }) {
   const [drinkData, setDrinkData] = useState([]);
   const [showSearchBar, setSearchBar] = useState(false);
   const [inProgressRecipes, setInProgressRecipes] = useState({ cocktails: {}, meals: {} });
+  const [qtdeIngredients, setQtdeIngredients] = useState([]);
 
   const state = {
     foodData,
@@ -17,6 +18,8 @@ export default function Provider({ children }) {
     setDrinkData,
     inProgressRecipes,
     setInProgressRecipes,
+    qtdeIngredients,
+    setQtdeIngredients,
   };
 
   return (

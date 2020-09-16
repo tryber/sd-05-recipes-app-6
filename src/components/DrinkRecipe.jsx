@@ -6,11 +6,13 @@ import share from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import handleClickFavorite from '../service/handleFavoriteDrink';
+import Context from '../context/Context';
 
 function DrinkRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const [favoriteImg, setFavoriteImg] = useState(whiteHeart);
   const [isFavorite, setIsfavorite] = useState(false);
+  const { setQtdeIngredients, qtdeIngredients } = useContext(Context);
 
   const handleFavorite = () => {
     if (!isFavorite) {
@@ -46,10 +48,11 @@ function DrinkRecipe({ recipe, checkbox }) {
       </button>
       <h4 data-testid="recipe-category">{recipe.strAlcoholic}</h4>
       <h3>Ingredients</h3>
-      {ingredients.map((ingredient) => {
+      {ingredients.map((ingredient, index) => {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {
           return <IngredientsList recipe={recipe} ingredient={ingredient} />;
         } else if (recipe[`strIngredient${ingredient}`]) {
+          setQtdeIngredients([...qtdeIngredients, {recipe.idDrink: index}]);
           return <DrinkIngListCheck recipe={recipe} ingredient={ingredient} />;
         }
         return null;
