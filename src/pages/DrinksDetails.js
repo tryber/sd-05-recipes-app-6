@@ -43,9 +43,11 @@ function DrinkDetail(props) {
       <DrinkRecipe recipe={recipe} />
       <div>
         <h3>Recomendadas</h3>
-        {foodData.meals.filter((a, index) => index < 6)
-          .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
-        }
+        <div className="carousel">
+          {foodData.meals.filter((a, index) => index < 6)
+            .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
+          }
+        </div>
       </div>
       {!doneRecipe && <Link
         className="btn-fixed" to={`/bebidas/${recipe.idDrink}/in-progress`}
