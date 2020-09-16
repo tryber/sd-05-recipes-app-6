@@ -28,7 +28,7 @@ function FoodRecipe({ recipe, checkbox }) {
     const favoritos = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (favoritos) {
       favoritos.forEach((element) => {
-        if (element.id === recipe.idDrink) {
+        if (element.id === recipe.idMeal) {
           setIsfavorite(true);
           setFavoriteImage(blackHeart);
         }

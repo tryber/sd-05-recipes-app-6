@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
+import createBrowserHistory from 'history/createBrowserHistory';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Context from '../context/Context';
 import { foodApi } from '../service/foodApi';
 import FoodCard from '../components/FoodCard';
 import FoodDropDown from '../components/FoodAreaDropDown';
-import createBrowserHistory from 'history/createBrowserHistory';
 
 function ExploreFoodArea() {
   const { foodData, setFoodData } = useContext(Context);
