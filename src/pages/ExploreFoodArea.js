@@ -5,6 +5,7 @@ import Context from '../context/Context';
 import { foodApi } from '../service/foodApi';
 import FoodCard from '../components/FoodCard';
 import FoodDropDown from '../components/FoodAreaDropDown';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 function ExploreFoodArea() {
   const { foodData, setFoodData } = useContext(Context);
@@ -16,18 +17,23 @@ function ExploreFoodArea() {
 
   if (!foodData.meals) return <div>Carregando...</div>;
 
-  return (
-    <div>
-      <Header title={'Explorar Origem'} showSearchIcon />
-      <FoodDropDown />
-      <div className="foto-nome-comida">
-        {foodData.meals.filter((meal, index) => index < 12)
-          .map((food, i) => <FoodCard food={food} index={i} />)
-        }
+  if (foodData.meals.length === 1) {
+    const history = createBrowserHistory({ forceRefresh: true });
+    history.push(`/comidas/${foodData.meals[0].idMeal}`);
+  } else {
+    return (
+      <div>
+        <Header title={'Explorar Origem'} showSearchIcon />
+        <FoodDropDown />
+        <div className="foto-nome-comida">
+          {foodData.meals.filter((meal, index) => index < 12)
+            .map((food, i) => <FoodCard food={food} index={i} />)
+          }
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
 export default ExploreFoodArea;
