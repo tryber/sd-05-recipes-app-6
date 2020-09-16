@@ -20,10 +20,10 @@ function MainReceipes() {
     return setStopApi(false);
   }, []);
 
-  if (!drinkData.drinks) return <div>Carregando...</div>;
-
-  if (drinkData.drinks.length === 0) {
+  if (!drinkData.drinks && stopApi) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  } else if (!drinkData.drinks && !stopApi) {
+    return <div>Carregando...</div>
   } else if (drinkData.drinks.length === 1) {
     const history = createBrowserHistory({ forceRefresh: true });
     history.push(`/bebidas/${drinkData.drinks[0].idDrink}`);

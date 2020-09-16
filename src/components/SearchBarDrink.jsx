@@ -3,7 +3,7 @@ import Context from '../context/Context';
 import filter from '../service/drinkFilter';
 
 const SearchBarDrink = () => {
-  const { setDrinkData } = useContext(Context);
+  const { setDrinkData, setStopApi } = useContext(Context);
 
   return (
     <div>
@@ -31,7 +31,7 @@ const SearchBarDrink = () => {
         <label htmlFor="Primeira letra">Primeira letra</label>
       </div>
       <div>
-        <button data-testid="exec-search-btn" onClick={() => filter(setDrinkData)}>Buscar</button>
+        <button data-testid="exec-search-btn" onClick={() => filter(setDrinkData, setStopApi)}>Buscar</button>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { foodIngredienteApi, foodNomeApi, foodLetraApi } from '../service/foodApi';
 
-export default function foodFilter(setFoodData) {
+export default function foodFilter(setFoodData, setStopApi) {
   const radios = document.getElementsByName('filtro');
   const busca = document.querySelector('#termo-de-busca').value;
   if (busca.length > 0) {
@@ -9,10 +9,12 @@ export default function foodFilter(setFoodData) {
         if (radio.value === 'Ingrediente') {
           foodIngredienteApi(busca).then((response) => {
             setFoodData(response);
+            setStopApi(true);
           });
         } else if (radio.value === 'Nome') {
           foodNomeApi(busca).then((response) => {
             setFoodData(response);
+            setStopApi(true);
           });
         } else if (radio.value === 'Primeira letra') {
           if (busca.length > 1) {
@@ -20,6 +22,7 @@ export default function foodFilter(setFoodData) {
           } else {
             foodLetraApi(busca).then((response) => {
               setFoodData(response);
+              setStopApi(true);
             });
           }
         }

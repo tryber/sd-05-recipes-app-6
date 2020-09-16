@@ -20,10 +20,10 @@ function MainReceipes() {
     return setStopApi(false);
   }, []);
 
-  if (!foodData.meals) return <div>Carregando...</div>;
-
-  if (foodData.meals.length === 0) {
+  if (!foodData.meals && stopApi) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  } else if (!foodData.meals && !stopApi) {
+    return <div>Carregando...</div>;
   } else if (foodData.meals.length === 1) {
     const history = createBrowserHistory({ forceRefresh: true });
     history.push(`/comidas/${foodData.meals[0].idMeal}`);
