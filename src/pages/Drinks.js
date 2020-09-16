@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import createBrowserHistory from 'history/createBrowserHistory';
 import { drinkApi } from '../service/drinkApi';
 import Context from '../context/Context';
 import DrinkCard from '../components/DrinkCard';
@@ -21,20 +22,27 @@ function MainReceipes() {
 
   if (!drinkData.drinks) return <div>Carregando...</div>;
 
-  return (
-    <div>
-      <HeaderDrinks title={'Bebidas'} showSearchIcon />
-      <CategoryFilters />
-      <div className="foto-nome-comida">
-        {drinkData.drinks.filter((a, index) => index < 12)
-          .map((drink, i) => <DrinkCard drink={drink} index={i} />)
-        }
+  if (drinkData.drinks.length === 0) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  } else if (drinkData.drinks.length === 1) {
+    const history = createBrowserHistory({ forceRefresh: true });
+    history.push(`/bebidas/${drinkData.drinks[0].idDrink}`);
+  } else {
+    return (
+      <div>
+        <HeaderDrinks title={'Bebidas'} showSearchIcon />
+        <CategoryFilters />
+        <div className="foto-nome-comida">
+          {drinkData.drinks.filter((a, index) => index < 12)
+            .map((drink, i) => <DrinkCard drink={drink} index={i} />)
+          }
+        </div>
+        <footer>
+          <Footer />
+        </footer>
       </div>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
-  );
+    );
+  }
 }
 
 export default MainReceipes;
