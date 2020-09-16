@@ -46,11 +46,11 @@ function FoodRecipe({ recipe, checkbox }) {
       </button>
       <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
       <h3>Ingredients</h3>
-      {ingredients.map((ingredient) => {
+      {ingredients.map((ingredient, i) => {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {
-          return <IngredientsList recipe={recipe} ingredient={ingredient} />;
+          return <IngredientsList recipe={recipe} ingredient={ingredient} index={i} />;
         } else if (recipe[`strIngredient${ingredient}`]) {
-          return <IngredientsListCheck recipe={recipe} ingredient={ingredient} />;
+          return <IngredientsListCheck recipe={recipe} ingredient={ingredient} index={i} />;
         }
         return null;
       })}

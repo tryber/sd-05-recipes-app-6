@@ -18,7 +18,7 @@ const handleDrink = (value, checked, id, inProgressRecipes) => {
   return data;
 };
 
-function DrinkIngListCheck({ recipe, ingredient }) {
+function DrinkIngListCheck({ recipe, ingredient, index }) {
   const { inProgressRecipes, setInProgressRecipes, qtdeIng, setBtnDisabled } = useContext(Context);
   const [checkIngredient, setCheck] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ function DrinkIngListCheck({ recipe, ingredient }) {
     <div key={recipe[`strIngredient${ingredient}`]}>
       <label
         htmlFor={recipe[`strIngredient${ingredient}`]}
-        data-testid={`${ingredient}-ingredient-step`}
+        data-testid={`${index}-ingredient-step`}
         className={classe}
       >
         <input

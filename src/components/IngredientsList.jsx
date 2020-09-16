@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import '../styles/App.css';
 
-function IngredientsList({ recipe, ingredient }) {
+function IngredientsList({ recipe, ingredient, index }) {
   return (
     <div
       key={recipe[`strIngredient${ingredient}`]}
-      data-testid={`${ingredient}-ingredient-name-and-measure`}
+      data-testid={`${index}-ingredient-name-and-measure`}
     >
       - {recipe[`strIngredient${ingredient}`]} - {recipe[`strMeasure${ingredient}`]}
     </div>

@@ -18,7 +18,7 @@ export default function IngCard({ ing, index }) {
           data-testid={`${index}-card-img`}
           className="drink-photo"
           name={ing}
-          src={`https://www.thecocktaildb.com/images/ingredients/${ing}.png`}
+          src={`https://www.thecocktaildb.com/images/ingredients/${ing}-Small.png`}
           alt={ing}
         />
         <h3 name={ing} className="drink-name" data-testid={`${index}-card-name`}>{ing}</h3>
