@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import '../styles/App.css';
+import handleCheckBoxChange from '../service/handleCheckBoxChange';
 
 const handleDrink = (value, checked, id, inProgressRecipes) => {
   const data = inProgressRecipes;
@@ -16,14 +17,6 @@ const handleDrink = (value, checked, id, inProgressRecipes) => {
   }
   return data;
 };
-
-const handleCheckBoxChange = (checked) => {
-  if (checked) {
-    return 'texto-riscado';
-  } else {
-    return '';
-  }
-}
 
 function DrinkIngListCheck({ recipe, ingredient }) {
   const { inProgressRecipes, setInProgressRecipes, qtdeIng, setBtnDisabled } = useContext(Context);

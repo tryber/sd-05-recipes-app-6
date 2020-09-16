@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import '../styles/App.css';
+import handleCheckBoxChange from '../service/handleCheckBoxChange';
 
 const handleMeal = (value, checked, id, inProgressRecipes) => {
   const data = inProgressRecipes;
@@ -31,7 +32,6 @@ function IngredientsListCheck({ recipe, ingredient }) {
         setCheck(localInProgress.meals[recipe.idMeal].includes(ingredient.toString()));
       }
     }
-
     setLoading(false);
   }, []);
 
@@ -45,11 +45,7 @@ function IngredientsListCheck({ recipe, ingredient }) {
 
   const handleChange = async (event) => {
     const { value, checked } = event.target;
-    if (checked) {
-      setClasse('texto-riscado');
-    } else {
-      setClasse('');
-    }
+    setClasse(handleCheckBoxChange(checked));
     await setInProgressRecipes(handleMeal(value, checked, recipe.idMeal, inProgressRecipes));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     if (inProgressRecipes.meals[recipe.idMeal].length === qtdeIng) {
