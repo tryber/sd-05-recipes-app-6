@@ -23,24 +23,17 @@ function DrinkIngListCheck({ recipe, ingredient }) {
   const [loading, setLoading] = useState(true);
   const [classe, setClasse] = useState('');
 
-  useEffect(() => {
+  useEffect(async () => {
     const localInProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (localInProgress) {
       setInProgressRecipes(localInProgress);
       if (localInProgress.cocktails[recipe.idDrink]) {
-        setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
+        await setCheck(localInProgress.cocktails[recipe.idDrink].includes(ingredient.toString()));
       }
     }
     setLoading(false);
+    (checkIngredient) ? (setClasse('texto-riscado')) : (setClasse(''));
   }, []);
-
-  useEffect(() => {
-    if (checkIngredient) {
-      (setClasse('texto-riscado'));
-    } else {
-      (setClasse(''));
-    }
-  }, [checkIngredient]);
 
   const handleChange = async (event) => {
     const { value, checked } = event.target;
