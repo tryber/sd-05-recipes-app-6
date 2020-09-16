@@ -79,4 +79,5 @@ export default IngredientsListCheck;
 IngredientsListCheck.propTypes = {
   recipe: PropTypes.instanceOf(Object).isRequired,
   ingredient: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };
