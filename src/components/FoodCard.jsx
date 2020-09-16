@@ -7,8 +7,11 @@ function FoodCard({ food, index }) {
   return (
     <Link to={`/comidas/${food.idMeal}`}>
       <div className="food-card" data-testid={`${index}-recipe-card`}>
-        <img className="food-photo" src={food.strMealThumb} alt={food.strMeal} />
-        <h3 className="food-name">{food.strMeal}</h3>
+        <img
+          data-testid={`${index}-card-img`} className="food-photo"
+          src={food.strMealThumb} alt={food.strMeal}
+        />
+        <h3 data-testid={`${index}-card-name`} className="food-name">{food.strMeal}</h3>
       </div>
     </Link>
   );
