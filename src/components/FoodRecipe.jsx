@@ -40,7 +40,7 @@ function FoodRecipe({ recipe, checkbox }) {
   const handleClick = () => {
     navigator.clipboard.writeText(`http://localhost:3000/comidas/${recipe.idMeal}`);
     setLinkCopiado(true);
-  }
+  };
 
   if (!recipe.idMeal) return <div>Carregando...</div>;
 

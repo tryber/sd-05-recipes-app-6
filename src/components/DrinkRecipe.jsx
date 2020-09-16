@@ -40,7 +40,7 @@ function DrinkRecipe({ recipe, checkbox }) {
   const handleClick = () => {
     navigator.clipboard.writeText(`http://localhost:3000/bebidas/${recipe.idDrink}`);
     setLinkCopiado(true);
-  }
+  };
 
   if (!recipe.idDrink) return <div>Carregando...</div>;
 

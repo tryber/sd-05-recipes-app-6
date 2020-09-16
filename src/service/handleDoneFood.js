@@ -9,7 +9,7 @@ export default function handleClickDone(recipe) {
   value.category = recipe.strCategory;
   value.name = recipe.strMeal;
   value.image = recipe.strMealThumb;
-  value.doneDate = `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`;
+  value.doneDate = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
   value.tags = recipe.strTags;
   localStorage.setItem('doneRecipes', JSON.stringify([...localDone, value]));
 }
