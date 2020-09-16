@@ -8,11 +8,16 @@ import CategoryFilters from '../components/DrinksFilters';
 // import '../styles/App.css';
 
 function MainReceipes() {
-  const { drinkData, setDrinkData } = useContext(Context);
+  const { drinkData, setDrinkData, stopApi, setStopApi } = useContext(Context);
   useEffect(() => {
-    drinkApi().then((response) => {
-      setDrinkData(response);
-    });
+    if (stopApi) {
+      return '';
+    } else {
+      drinkApi().then((response) => {
+        setDrinkData(response);
+      });
+      return setStopApi(false);
+    }
   }, []);
 
   if (!drinkData.drinks) return <div>Carregando...</div>;

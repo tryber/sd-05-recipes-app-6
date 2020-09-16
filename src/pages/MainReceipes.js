@@ -8,11 +8,16 @@ import CategoryFilters from '../components/FoodFilters';
 // import '../styles/App.css';
 
 function MainReceipes() {
-  const { foodData, setFoodData } = useContext(Context);
+  const { foodData, setFoodData, stopApi, setStopApi } = useContext(Context);
   useEffect(() => {
-    foodApi().then((response) => {
-      setFoodData(response);
-    });
+    if (stopApi) {
+      return '';
+    } else {
+      foodApi().then((response) => {
+        setFoodData(response);
+      });
+      return setStopApi(false);
+    }
   }, []);
 
   if (!foodData.meals) return <div>Carregando...</div>;
