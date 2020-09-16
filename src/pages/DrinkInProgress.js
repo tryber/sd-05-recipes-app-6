@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { drinkIdApi } from '../service/drinkApi';
 import DrinkRecipe from '../components/DrinkRecipe';
 import Context from '../context/Context';
-import handleClickDone from '../service/handleDoneDrink';
+import { handleDrinkDone } from '../service/handleDoneRecipe';
 
 function DrinkInProgress(props) {
   const [recipe, setRecipe] = useState({});
@@ -27,7 +27,7 @@ function DrinkInProgress(props) {
   }, [recipe]);
 
   const handleClick = () => {
-    handleClickDone(recipe);
+    handleDrinkDone(recipe);
     setRedirect(true);
   };
 
