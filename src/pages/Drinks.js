@@ -13,29 +13,28 @@ function MainReceipes() {
     if (stopApi) {
       return '';
     }
-    
     drinkApi().then((response) => {
       setDrinkData(response);
     });
     return setStopApi(false);
   }, []);
 
-if (!drinkData.drinks) return <div>Carregando...</div>;
+  if (!drinkData.drinks) return <div>Carregando...</div>;
 
-return (
-  <div>
-    <HeaderDrinks title={'Bebidas'} showSearchIcon />
-    <CategoryFilters />
-    <div className="foto-nome-comida">
-      {drinkData.drinks.filter((a, index) => index < 12)
-        .map((drink) => <DrinkCard drink={drink} />)
-      }
+  return (
+    <div>
+      <HeaderDrinks title={'Bebidas'} showSearchIcon />
+      <CategoryFilters />
+      <div className="foto-nome-comida">
+        {drinkData.drinks.filter((a, index) => index < 12)
+          .map((drink) => <DrinkCard drink={drink} />)
+        }
+      </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
-    <footer>
-      <Footer />
-    </footer>
-  </div>
-);
+  );
 }
 
 export default MainReceipes;

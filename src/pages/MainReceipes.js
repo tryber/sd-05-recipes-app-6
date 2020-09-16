@@ -13,11 +13,9 @@ function MainReceipes() {
     if (stopApi) {
       return '';
     }
-
     foodApi().then((response) => {
       setFoodData(response);
     });
-    
     return setStopApi(false);
   }, []);
 
