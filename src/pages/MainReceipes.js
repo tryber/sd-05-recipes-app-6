@@ -12,10 +12,12 @@ function MainReceipes() {
   useEffect(() => {
     if (stopApi) {
       return '';
-    }    
+    }
+
     foodApi().then((response) => {
       setFoodData(response);
     });
+    
     return setStopApi(false);
   }, []);
 

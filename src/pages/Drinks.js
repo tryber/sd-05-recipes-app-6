@@ -13,6 +13,7 @@ function MainReceipes() {
     if (stopApi) {
       return '';
     }
+    
     drinkApi().then((response) => {
       setDrinkData(response);
     });
