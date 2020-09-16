@@ -8,6 +8,7 @@ export default function Provider({ children }) {
   const [showSearchBar, setSearchBar] = useState(false);
   const [inProgressRecipes, setInProgressRecipes] = useState({ cocktails: {}, meals: {} });
   const [qtdeIngredients, setQtdeIngredients] = useState([]);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const state = {
     foodData,
@@ -20,6 +21,8 @@ export default function Provider({ children }) {
     setInProgressRecipes,
     qtdeIngredients,
     setQtdeIngredients,
+    btnDisabled,
+    setBtnDisabled,
   };
 
   return (

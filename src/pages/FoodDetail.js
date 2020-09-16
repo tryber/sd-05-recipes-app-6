@@ -22,8 +22,10 @@ function FoodDetail(props) {
   }, []);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('inProgressRecipes')).meals[recipe.idMeal]) {
-      setLabelButton('Continuar Receita');
+    if(JSON.parse(localStorage.getItem('inProgressRecipes'))){
+      if (JSON.parse(localStorage.getItem('inProgressRecipes')).meals[recipe.idMeal]) {
+        setLabelButton('Continuar Receita');
+      }
     }
     const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
     if (localDone) {

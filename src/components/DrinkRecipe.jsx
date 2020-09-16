@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import IngredientsList from './IngredientsList';
 import DrinkIngListCheck from './DrinksIngListCheck';
@@ -12,7 +12,6 @@ function DrinkRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const [favoriteImg, setFavoriteImg] = useState(whiteHeart);
   const [isFavorite, setIsfavorite] = useState(false);
-  const { setQtdeIngredients, qtdeIngredients } = useContext(Context);
 
   const handleFavorite = () => {
     if (!isFavorite) {
@@ -52,7 +51,6 @@ function DrinkRecipe({ recipe, checkbox }) {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {
           return <IngredientsList recipe={recipe} ingredient={ingredient} />;
         } else if (recipe[`strIngredient${ingredient}`]) {
-          setQtdeIngredients([...qtdeIngredients, {recipe.idDrink: index}]);
           return <DrinkIngListCheck recipe={recipe} ingredient={ingredient} />;
         }
         return null;
