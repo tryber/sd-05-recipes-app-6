@@ -13,10 +13,10 @@ const SearchBarDrink = () => {
       <div>
         <input
           type="radio"
-          id="Ingrediente"
-          name="filtro"
-          value="Ingrediente"
           data-testid="ingredient-search-radio"
+          id="Ingrediente"
+          value="Ingrediente"
+          name="filtro"
         />
         <label htmlFor="Ingrediente">Ingrediente</label>
         <input type="radio" id="Nome" name="filtro" value="Nome" data-testid="name-search-radio" />
