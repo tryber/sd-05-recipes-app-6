@@ -3,7 +3,7 @@ import Context from '../context/Context';
 import filter from '../service/foodFilter';
 
 const SearchBar = () => {
-  const { setFoodData } = useContext(Context);
+  const { setFoodData, setStopApi } = useContext(Context);
 
   return (
     <div>
@@ -33,7 +33,7 @@ const SearchBar = () => {
       <div>
         <button
           data-testid="exec-search-btn"
-          onClick={() => filter(setFoodData)}
+          onClick={() => filter(setFoodData, setStopApi)}
         >
           Buscar
         </button>
