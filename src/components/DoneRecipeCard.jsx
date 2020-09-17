@@ -8,7 +8,6 @@ import TagsFood from './TagsFood';
 function DoneRecipeCard({ recipe, index }) {
   const [linkCopiado, setLinkCopiado] = useState(false);
   const [type, setType] = useState('');
-  const [tagsFood, setTags] = useState([]);
 
   useEffect(() => {
     if (recipe.type === 'comida') {
@@ -44,7 +43,7 @@ function DoneRecipeCard({ recipe, index }) {
         </h3>
       </Link>
       <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
-      {recipe.tags && recipe.type === 'comida ' && <TagsFood index={index} recipe={recipe} />}
+      {recipe.type === 'comida ' && <TagsFood index={index} recipe={recipe} />}
       <p data-testid={`${index}-${recipe.tags}-horizontal-tag`}>
         {tagsFood[0]}
       </p>

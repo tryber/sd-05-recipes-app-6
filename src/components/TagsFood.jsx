@@ -8,7 +8,7 @@ function TagsFood({ recipe, index }) {
     if (recipe.tags !== null && recipe.tags !== '') {
       const tagsSeparated = recipe.tags.split(',');
       setTags([...tagsSeparated]);
-    };
+    }
   }, []);
 
   if (!tagsFood) return null;

@@ -42,7 +42,7 @@ function FavoriteReceipeCard({ recipe, index }) {
         <img className="drink-photo" src={recipe.image} alt={recipe.name} data-testid={`${index}-horizontal-image`} />
       </Link>
       <HorizontalTopText recipe={recipe} index={index} />
-      <Link  to={`${type}/${recipe.id}`}><h2 data-testid={`${index}-horizontal-name`}>{recipe.name}</h2></Link>
+      <Link to={`${type}/${recipe.id}`}><h2 data-testid={`${index}-horizontal-name`}>{recipe.name}</h2></Link>
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
       </button>

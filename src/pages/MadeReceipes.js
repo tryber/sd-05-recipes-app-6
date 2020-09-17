@@ -17,20 +17,20 @@ function MadeReceipes() {
   };
 
   const filterFood = () => {
-    setDoneRecipes(localDone.filter(e => e.type === 'comida'));
+    setDoneRecipes(localDone.filter((e) => e.type === 'comida'));
   };
 
   const filterDrink = () => {
-    setDoneRecipes(localDone.filter(e => e.type === 'bebida'));
+    setDoneRecipes(localDone.filter((e) => e.type === 'bebida'));
   };
 
   return (
     <div>
       <Header title={'Receitas Feitas'} showSearchIcon={false} />
       <div>
-      <button data-testid="filter-by-all-btn" onClick={filterAll}>All</button>
-      <button data-testid="filter-by-food-btn" onClick={filterFood}>Food</button>
-      <button data-testid="filter-by-drink-btn" onClick={filterDrink}>Drinks</button>
+        <button data-testid="filter-by-all-btn" onClick={filterAll}>All</button>
+        <button data-testid="filter-by-food-btn" onClick={filterFood}>Food</button>
+        <button data-testid="filter-by-drink-btn" onClick={filterDrink}>Drinks</button>
         <div>
           {doneRecipes.map((element, i) => (
             <DoneRecipeCard recipe={element} index={i} />

@@ -15,11 +15,11 @@ function FavoriteReceipes() {
   };
 
   const filterFood = () => {
-    setFavoriteRecipes(localFavs.filter(e => e.type === 'comida'));
+    setFavoriteRecipes(localFavs.filter((e) => e.type === 'comida'));
   };
 
   const filterDrink = () => {
-    setFavoriteRecipes(localFavs.filter(e => e.type === 'bebida'));
+    setFavoriteRecipes(localFavs.filter((e) => e.type === 'bebida'));
   };
 
   return (
