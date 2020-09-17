@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import createBrowserHistory from 'history/createBrowserHistory';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Profile() {
+  const [email, setEmail] = useState('email');
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('user'));
+    if (storage) setEmail(storage.email);
+  }, []);
   const goToDone = () => {
     const history = createBrowserHistory({ forceRefresh: true });
     history.push('/receitas-feitas');
@@ -21,7 +27,7 @@ function Profile() {
     <div>
       <Header title={'Perfil'} showSearchIcon={false} />
       <div>
-        <div data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</div>
+        <div data-testid="profile-email">{email}</div>
         <button
           type="button"
           data-testid="profile-done-btn"
