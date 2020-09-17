@@ -1,5 +1,13 @@
 import { drinkIngredienteApi, drinkNomeApi, drinkLetraApi } from '../service/drinkApi';
 
+const funcaoCodeClimate = (response, setDrinkData) => {
+  if (!response.drinks) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  } else {
+    setDrinkData(response);
+  }
+}
+
 export default function drinkFilter(setDrinkData) {
   const radios = document.getElementsByName('filtro');
   const busca = document.querySelector('#termo-de-busca').value;
@@ -8,19 +16,11 @@ export default function drinkFilter(setDrinkData) {
       if (radio.checked) {
         if (radio.value === 'Ingrediente') {
           drinkIngredienteApi(busca).then((response) => {
-            if (!response.drinks) {
-              alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-            } else {
-              setDrinkData(response);
-            }
+            funcaoCodeClimate(response, setDrinkData);
           });
         } else if (radio.value === 'Nome') {
           drinkNomeApi(busca).then((response) => {
-            if (!response.drinks) {
-              alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-            } else {
-              setDrinkData(response);
-            }
+            funcaoCodeClimate(response, setDrinkData);
           });
         } else if (radio.value === 'Primeira letra') {
           if (busca.length > 1) {
