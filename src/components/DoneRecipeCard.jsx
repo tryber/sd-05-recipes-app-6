@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import share from '../images/shareIcon.svg';
-import { useEffect } from 'react';
 
 function DoneRecipeCard({ recipe, index }) {
   const [linkCopiado, setLinkCopiado] = useState(false);
@@ -29,7 +28,8 @@ function DoneRecipeCard({ recipe, index }) {
     setLinkCopiado(true);
   };
 
-  if (!type) return <div>Carregando...</div>
+  if (!type) return <div>Carregando...</div>;
+
   return (
     <div key={recipe.id} className="food-card">
       <Link to={`${type}/${recipe.id}`}>
@@ -44,14 +44,15 @@ function DoneRecipeCard({ recipe, index }) {
       {recipe.alcoholicOrNot && <h3 data-testid={`${index}-horizontal-top-text`}>
         {recipe.alcoholicOrNot}
       </h3>}
-      <Link to={`${type}/${recipe.id}`}><h3 data-testid={`${index}-horizontal-name`}>
+      <Link to={`${type}/${recipe.id}`}>
+        <h3 data-testid={`${index}-horizontal-name`}>
           {recipe.name}
         </h3>
       </Link>
       <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
-      {recipe.tags && <p data-testid={`${index}-${recipe.tags}-horizontal-tag`}>
+      <p data-testid={`${index}-${recipe.tags}-horizontal-tag`}>
         {recipe.tags}
-      </p>}
+      </p>
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
       </button>
