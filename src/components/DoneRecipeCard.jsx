@@ -12,16 +12,16 @@ function DoneRecipeCard({ recipe, index }) {
   };
 
   return (
-    <div key={recipe.id} className="drink-card">
+    <div key={recipe.id} className="food-card">
       <Link to="">
         <img
-          className="drink-photo" src={recipe.image}
+          className="food-photo" src={recipe.image}
           alt={recipe.name} data-testid={`${index}-horizontal-image"`}
         />
       </Link>
       {recipe.category && <h3>{recipe.category}</h3>}
       {recipe.alcoholicOrNot && <h3>{recipe.alcoholicOrNot}</h3>}
-      <Link to=""><h2 data-testid={`${index}-horizontal-name`}>{recipe.name}</h2></Link>
+      <Link to=""><h3 data-testid={`${index}-horizontal-name`}>{recipe.name}</h3></Link>
       <h3>{`Feita em: ${recipe.doneDate}`}</h3>
       <p data-testid={`${index}-{tagName}-horizontal-tag`}>tag</p>
       <p>tag</p>
