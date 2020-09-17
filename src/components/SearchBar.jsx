@@ -31,7 +31,12 @@ const SearchBar = () => {
         <label htmlFor="Primeira letra">Primeira letra</label>
       </div>
       <div>
-        <button data-testid="exec-search-btn" onClick={() => filter(setFoodData)}>Buscar</button>
+        <button
+          data-testid="exec-search-btn"
+          onClick={() => filter(setFoodData)}
+        >
+          Buscar
+        </button>
       </div>
     </div>
   );
