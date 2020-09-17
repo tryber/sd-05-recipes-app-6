@@ -16,9 +16,9 @@ function FavoriteReceipes() {
       <button data-testid="filter-by-food-btn">Food</button>
       <button data-testid="filter-by-drink-btn">Drinks</button>
       <div>
-        {favoriteRecipes.map((element, i) => {
-          return <FavoriteReceipeCard index={i} recipe={element} />
-        })}
+        {favoriteRecipes.map((element, i) => (
+          <FavoriteReceipeCard index={i} recipe={element} />
+        ))}
       </div>
     </div>
   );
