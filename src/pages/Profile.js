@@ -1,13 +1,48 @@
 import React from 'react';
+import createBrowserHistory from 'history/createBrowserHistory';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Profile() {
+  const goToDone = () => {
+    const history = createBrowserHistory({ forceRefresh: true });
+    history.push('/receitas-feitas');
+  }
+  const goToFavorites = () => {
+    const history = createBrowserHistory({ forceRefresh: true });
+    history.push('/receitas-favoritas');
+  }
+  const goToLogin = () => {
+    localStorage.clear();
+    const history = createBrowserHistory({ forceRefresh: true });
+    history.push('/');
+  }
   return (
     <div>
       <Header title={'Perfil'} showSearchIcon={false} />
       <div>
-        <h1>Profile</h1>
+        <div data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</div>
+        <button
+          type="button"
+          data-testid="profile-done-btn"
+          onClick={() => goToDone()}
+        >
+          Receitas Feitas
+        </button>
+        <button
+          type="button"
+          data-testid="profile-favorite-btn"
+          onClick={() => goToFavorites()}
+        >
+          Receitas Favoritas
+        </button>
+        <button
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={() => goToLogin()}
+        >
+          Sair
+        </button>
       </div>
       <Footer />
     </div>
