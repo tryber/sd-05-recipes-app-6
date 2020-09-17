@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 

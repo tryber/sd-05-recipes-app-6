@@ -10,7 +10,7 @@ function DoneRecipeCard({ recipe, index }) {
     navigator.clipboard.writeText(`http://localhost:3000/comidas/${recipe.idMeal}`);
     setLinkCopiado(true);
   };
-  if (!isPresent) return null;
+
   return (
     <div key={recipe.id} className="drink-card">
       <Link to="">
@@ -23,7 +23,7 @@ function DoneRecipeCard({ recipe, index }) {
       {recipe.alcoholicOrNot && <h3>{recipe.alcoholicOrNot}</h3>}
       <Link to=""><h2 data-testid={`${index}-horizontal-name`}>{recipe.name}</h2></Link>
       <h3>{`Feita em: ${recipe.doneDate}`}</h3>
-      <p data-testid={`${index}-${tagName}-horizontal-tag`}>tag</p>
+      <p data-testid={`${index}-{tagName}-horizontal-tag`}>tag</p>
       <p>tag</p>
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
