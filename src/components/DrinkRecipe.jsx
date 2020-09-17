@@ -11,6 +11,7 @@ function DrinkRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const [favoriteImg, setFavoriteImage] = useState(whiteHeart);
   const [isFavorite, setIsfavorite] = useState(false);
+  const [linkCopiado, setLinkCopiado] = useState(false);
 
   const handleFavorite = () => {
     if (!isFavorite) {
@@ -36,23 +37,31 @@ function DrinkRecipe({ recipe, checkbox }) {
     }
   }, []);
 
+  const handleClick = () => {
+    navigator.clipboard.writeText(`http://localhost:3000/bebidas/${recipe.idDrink}`);
+    setLinkCopiado(true);
+  };
+
   if (!recipe.idDrink) return <div>Carregando...</div>;
 
   return (
     <div>
       <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={recipe.strDrink} />
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <button data-testid="share-btn"><img src={share} alt="share" /></button>
-      <button data-testid="favorite-btn" onClick={handleFavorite}>
+      <button data-testid="share-btn" src={share} onClick={handleClick}>
+        <img src={share} alt="share" />
+      </button>
+      {linkCopiado && <p>Link copiado!</p>}
+      <button data-testid="favorite-btn" onClick={handleFavorite} src={favoriteImg}>
         <img src={favoriteImg} alt="favorite" />
       </button>
       <h4 data-testid="recipe-category">{recipe.strAlcoholic}</h4>
       <h3>Ingredients</h3>
-      {ingredients.map((ingredient) => {
+      {ingredients.map((ingredient, i) => {
         if (recipe[`strIngredient${ingredient}`] && !checkbox) {
-          return <IngredientsList recipe={recipe} ingredient={ingredient} />;
+          return <IngredientsList recipe={recipe} ingredient={ingredient} index={i} />;
         } else if (recipe[`strIngredient${ingredient}`]) {
-          return <DrinkIngListCheck recipe={recipe} ingredient={ingredient} />;
+          return <DrinkIngListCheck recipe={recipe} ingredient={ingredient} index={i} />;
         }
         return null;
       })}

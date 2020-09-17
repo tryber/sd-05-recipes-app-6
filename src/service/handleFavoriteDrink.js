@@ -4,7 +4,7 @@ export default function handleClickFavorite(favorite, recipe) {
   if (favorite) {
     const value = { id: '', type: '', area: '', category: '', alcoholicOrNot: '', name: '', image: '' };
     value.id = recipe.idDrink;
-    value.type = 'cocktail';
+    value.type = 'bebida';
     value.alcoholicOrNot = recipe.strAlcoholic;
     value.category = recipe.strCategory;
     value.name = recipe.strDrink;

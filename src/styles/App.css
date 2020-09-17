@@ -91,3 +91,8 @@
 .texto-riscado {
   text-decoration: line-through;
 }
+
+.carousel {
+  display: flex;
+  overflow: auto;
+}

@@ -16,9 +16,7 @@ function FoodDetail(props) {
     foodIdApi(props.match.params.id).then((response) => {
       setRecipe(response.meals[0]);
     });
-    drinkApi().then((response) => {
-      setDrinkData(response);
-    });
+    drinkApi().then((response) => { setDrinkData(response); });
   }, []);
 
   useEffect(() => {
@@ -45,9 +43,11 @@ function FoodDetail(props) {
         src={`https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}`}
       />
       <h3>Recomendadas</h3>
-      {drinkData.drinks.filter((a, index) => index < 6)
-        .map((drink, i) => <DrinkCardRecomenda drink={drink} index={i} />)
-      }
+      <div className="carousel">
+        {drinkData.drinks.filter((a, index) => index < 6)
+          .map((drink, i) => <DrinkCardRecomenda drink={drink} index={i} />)
+        }
+      </div>
       {!doneRecipe && <Link
         className="btn-fixed" to={`/comidas/${recipe.idMeal}/in-progress`}
         data-testid="start-recipe-btn"
