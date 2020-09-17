@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import share from '../images/shareIcon.svg';
+import HorizontalTopText from './HorizontalTopText';
 
 function DoneRecipeCard({ recipe, index }) {
   const [linkCopiado, setLinkCopiado] = useState(false);
@@ -38,12 +39,7 @@ function DoneRecipeCard({ recipe, index }) {
           alt={recipe.name} data-testid={`${index}-horizontal-image`}
         />
       </Link>
-      {recipe.category && <h3 data-testid={`${index}-horizontal-top-text`}>
-        {`${recipe.area} - ${recipe.category}`}
-      </h3>}
-      {recipe.alcoholicOrNot && <h3 data-testid={`${index}-horizontal-top-text`}>
-        {recipe.alcoholicOrNot}
-      </h3>}
+      <HorizontalTopText recipe={recipe} index={index} />
       <Link to={`${type}/${recipe.id}`}>
         <h3 data-testid={`${index}-horizontal-name`}>
           {recipe.name}
