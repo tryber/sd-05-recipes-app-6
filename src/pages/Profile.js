@@ -7,16 +7,16 @@ function Profile() {
   const goToDone = () => {
     const history = createBrowserHistory({ forceRefresh: true });
     history.push('/receitas-feitas');
-  }
+  };
   const goToFavorites = () => {
     const history = createBrowserHistory({ forceRefresh: true });
     history.push('/receitas-favoritas');
-  }
+  };
   const goToLogin = () => {
     localStorage.clear();
     const history = createBrowserHistory({ forceRefresh: true });
     history.push('/');
-  }
+  };
   return (
     <div>
       <Header title={'Perfil'} showSearchIcon={false} />
