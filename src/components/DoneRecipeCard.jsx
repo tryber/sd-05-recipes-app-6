@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import share from '../images/shareIcon.svg';
 import HorizontalTopText from './HorizontalTopText';
+import TagsFood from './TagsFood';
 
 function DoneRecipeCard({ recipe, index }) {
   const [linkCopiado, setLinkCopiado] = useState(false);
   const [type, setType] = useState('');
+  const [tagsFood, setTags] = useState([]);
 
   useEffect(() => {
-/*     if (recipe.tags) {
-      const tagsSeparated = recipe.tags.split(',');
-      setTags([...tagsSeparated]);
-    }; */
     if (recipe.type === 'comida') {
       setType('comidas');
     } else {
@@ -46,8 +44,9 @@ function DoneRecipeCard({ recipe, index }) {
         </h3>
       </Link>
       <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
+      {recipe.tags && recipe.type === 'comida ' && <TagsFood index={index} recipe={recipe} />}
       <p data-testid={`${index}-${recipe.tags}-horizontal-tag`}>
-        {recipe.tags}
+        {tagsFood[0]}
       </p>
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
