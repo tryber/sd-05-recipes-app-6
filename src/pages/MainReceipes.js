@@ -22,7 +22,7 @@ function MainReceipes() {
 
   if (!foodData.meals) return <div>Carregando...</div>;
 
-  if (foodData.meals.length === 1) return <Redirect to={`/comidas/${foodData.meals[0].idMeal}`} />;
+  if (foodData.meals.length === 1 && stopApi) return <Redirect to={`/comidas/${foodData.meals[0].idMeal}`} />;
 
   return (
     <div>

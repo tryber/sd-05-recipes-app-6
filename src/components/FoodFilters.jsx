@@ -4,7 +4,7 @@ import { foodCategoryApi, foodByCategoryApi, foodApi } from '../service/foodApi'
 
 export default function CategoryFilters() {
   const { filtersData, setFilters, setFoodData } = useContext(Context);
-  const { selectedFilter, setSelectedFilter } = useContext(Context);
+  const { selectedFilter, setSelectedFilter, setStopApi } = useContext(Context);
   useEffect(() => {
     foodCategoryApi().then((response) => {
       const data = ['All'];
@@ -35,7 +35,7 @@ export default function CategoryFilters() {
           key={filter}
           type="button"
           data-testid={`${filter}-category-filter`}
-          onClick={(event) => filterByCategory(event.target.innerHTML)}
+          onClick={(event) => filterByCategory(event.target.innerHTML || setStopApi(true))}
         >
           {filter}
         </button>
