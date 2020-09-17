@@ -10,17 +10,17 @@ export default function foodFilter(setFoodData) {
           foodIngredienteApi(busca).then((response) => {
             if (!response.meals) {
               alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-            } else {
-              setFoodData(response);
+              return '';
             }
+            setFoodData(response);
           });
         } else if (radio.value === 'Nome') {
           foodNomeApi(busca).then((response) => {
             if (!response.meals) {
               alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-            } else {
-              setFoodData(response);
+              return '';
             }
+            setFoodData(response);
           });
         } else if (radio.value === 'Primeira letra') {
           if (busca.length > 1) {

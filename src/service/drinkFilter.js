@@ -10,17 +10,17 @@ export default function drinkFilter(setDrinkData) {
           drinkIngredienteApi(busca).then((response) => {
             if (!response.drinks) {
               alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-            } else {
-              setDrinkData(response);
+              return '';
             }
+            setDrinkData(response);
           });
         } else if (radio.value === 'Nome') {
           drinkNomeApi(busca).then((response) => {
             if (!response.drinks) {
               alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-            } else {
-              setDrinkData(response);
+              return '';
             }
+            setDrinkData(response);
           });
         } else if (radio.value === 'Primeira letra') {
           if (busca.length > 1) {
