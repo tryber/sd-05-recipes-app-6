@@ -6,11 +6,11 @@ function TagsFood({ recipe, index }) {
 
   useEffect(() => {
     console.log(recipe);
-    if (recipe.tags && typeof(recipe.tags) === 'string') {
+    if (recipe.tags && typeof (recipe.tags) === 'string') {
       const tagsSeparated = recipe.tags.split(',');
       setTags([...tagsSeparated]);
     } else if (recipe.tags) {
-      setTags([...recipe.tags])
+      setTags([...recipe.tags]);
     }
   }, []);
 
