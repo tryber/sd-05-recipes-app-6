@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import createBrowserHistory from 'history/createBrowserHistory';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { goToDone, goToFavorites, goToLogin } from '../service/redirectProfile';
 
 function Profile() {
   const [email, setEmail] = useState('email');
@@ -10,19 +10,7 @@ function Profile() {
     const storage = JSON.parse(localStorage.getItem('user'));
     if (storage) setEmail(storage.email);
   }, []);
-  const goToDone = () => {
-    const history = createBrowserHistory({ forceRefresh: true });
-    history.push('/receitas-feitas');
-  };
-  const goToFavorites = () => {
-    const history = createBrowserHistory({ forceRefresh: true });
-    history.push('/receitas-favoritas');
-  };
-  const goToLogin = () => {
-    localStorage.clear();
-    const history = createBrowserHistory({ forceRefresh: true });
-    history.push('/');
-  };
+
   return (
     <div>
       <Header title={'Perfil'} showSearchIcon={false} />
