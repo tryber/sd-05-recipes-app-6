@@ -6,7 +6,7 @@ const funcaoCodeClimate = (response, setFoodData) => {
   } else {
     setFoodData(response);
   }
-}
+};
 
 export default function foodFilter(setFoodData) {
   const radios = document.getElementsByName('filtro');
