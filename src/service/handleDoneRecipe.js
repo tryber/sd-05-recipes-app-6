@@ -6,7 +6,7 @@ let localDone = JSON.parse(localStorage.getItem('doneRecipes'));
 export function handleDrinkDone(recipe) {
   if (!localDone) { localDone = []; }
   value.id = recipe.idDrink;
-  value.type = 'cocktail';
+  value.type = 'bebida';
   value.alcoholicOrNot = recipe.strAlcoholic;
   value.category = recipe.strCategory;
   value.name = recipe.strDrink;
@@ -18,7 +18,7 @@ export function handleDrinkDone(recipe) {
 export function handleFoodDone(recipe) {
   if (!localDone) { localDone = []; }
   value.id = recipe.idMeal;
-  value.type = 'meal';
+  value.type = 'comida';
   value.area = recipe.strArea;
   value.category = recipe.strCategory;
   value.name = recipe.strMeal;
