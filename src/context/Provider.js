@@ -6,6 +6,9 @@ export default function Provider({ children }) {
   const [foodData, setFoodData] = useState([]);
   const [drinkData, setDrinkData] = useState([]);
   const [showSearchBar, setSearchBar] = useState(false);
+  const [inProgressRecipes, setInProgressRecipes] = useState({ cocktails: {}, meals: {} });
+  const [qtdeIng, setQtdeIngredients] = useState([]);
+  const [btnDisabled, setBtnDisabled] = useState(true);
   const [filtersData, setFilters] = useState(['All']);
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [foodDropdown, setFoodDropdown] = useState(['All']);
@@ -19,6 +22,12 @@ export default function Provider({ children }) {
     setSearchBar,
     drinkData,
     setDrinkData,
+    inProgressRecipes,
+    setInProgressRecipes,
+    qtdeIng,
+    setQtdeIngredients,
+    btnDisabled,
+    setBtnDisabled,
     filtersData,
     setFilters,
     selectedFilter,

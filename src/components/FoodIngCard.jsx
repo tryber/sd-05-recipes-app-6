@@ -18,7 +18,7 @@ export default function FoodIngCard({ ing, index }) {
           data-testid={`${index}-card-img`}
           className="food-photo"
           name={ing}
-          src={`https://www.themealdb.com/images/ingredients/${ing}.png`}
+          src={`https://www.themealdb.com/images/ingredients/${ing}-Small.png`}
           alt={ing}
         />
         <h3 name={ing} className="food-name" data-testid={`${index}-card-name`}>{ing}</h3>

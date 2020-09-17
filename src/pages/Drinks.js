@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { drinkApi } from '../service/drinkApi';
 import Context from '../context/Context';
 import DrinkCard from '../components/DrinkCard';
@@ -21,13 +22,15 @@ function MainReceipes() {
 
   if (!drinkData.drinks) return <div>Carregando...</div>;
 
+  if (drinkData.drinks.length === 1) return <Redirect to={`/bebidas/${drinkData.drinks[0].idDrink}`} />;
+
   return (
     <div>
       <HeaderDrinks title={'Bebidas'} showSearchIcon />
       <CategoryFilters />
       <div className="foto-nome-comida">
         {drinkData.drinks.filter((a, index) => index < 12)
-          .map((drink) => <DrinkCard drink={drink} />)
+          .map((drink, i) => <DrinkCard drink={drink} index={i} />)
         }
       </div>
       <footer>

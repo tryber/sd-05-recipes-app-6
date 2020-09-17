@@ -8,6 +8,8 @@ import FoodCardRecomenda from '../components/FoodCardRecomenda';
 
 function DrinkDetail(props) {
   const [recipe, setRecipe] = useState({});
+  const [doneRecipe, setDoneRecipe] = useState(false);
+  const [labelButton, setLabelButton] = useState('Iniciar Receita');
 
   const { foodData, setFoodData } = useContext(Context);
 
@@ -20,6 +22,20 @@ function DrinkDetail(props) {
     });
   }, []);
 
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+      if (JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[recipe.idDrink]) {
+        setLabelButton('Continuar Receita');
+      }
+    }
+    const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (localDone) {
+      setDoneRecipe(localDone.find((e) => e.id === recipe.idDrink));
+    } else {
+      setDoneRecipe(false);
+    }
+  }, [recipe]);
+
   if (!recipe.idDrink || foodData.length === 0) return <div>Carregando...</div>;
 
   return (
@@ -27,13 +43,18 @@ function DrinkDetail(props) {
       <DrinkRecipe recipe={recipe} />
       <div>
         <h3>Recomendadas</h3>
-        {foodData.meals.filter((a, index) => index < 6)
-          .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
-        }
+        <div className="carousel">
+          {foodData.meals.filter((a, index) => index < 6)
+            .map((food, i) => <FoodCardRecomenda food={food} index={i} />)
+          }
+        </div>
       </div>
-      <Link to={`/bebidas/${recipe.idDrink}/in-progress`} data-testid="start-recipe-btn">
-        Iniciar Receita
-      </Link>
+      {!doneRecipe && <Link
+        className="btn-fixed" to={`/bebidas/${recipe.idDrink}/in-progress`}
+        data-testid="start-recipe-btn"
+      >
+        <button>{labelButton}</button>
+      </Link>}
     </div>
   );
 }

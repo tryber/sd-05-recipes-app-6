@@ -1,4 +1,4 @@
-.food-card {
+.food-card , .drink-card {
   border-radius: 6px;
   box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   display: inline-block;
@@ -7,12 +7,12 @@
   width: 150px;
 }
 
-.food-photo {
+.food-photo , .drink-photo {
   height: 140px;
   width: 150px;
 }
 
-.food-name {
+.food-name , .drink-name {
   align-items: flex-end;
   display: flex;
   font-family: -apple-system,
@@ -59,6 +59,13 @@
   width: 293px;
 }
 
+.btn-fixed {
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  position: fixed;
+}
+
 .btn-entrar {
   background-color: #73e34f;
   color: black;
@@ -79,4 +86,13 @@
   margin-left: 11px;
   margin-top: 200px;
   width: 330px;
+}
+
+.texto-riscado {
+  text-decoration: line-through;
+}
+
+.carousel {
+  display: flex;
+  overflow: auto;
 }
