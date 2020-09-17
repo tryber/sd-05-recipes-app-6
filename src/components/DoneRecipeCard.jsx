@@ -39,7 +39,7 @@ function DoneRecipeCard({ recipe, index }) {
         </h3>
       </Link>
       <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
-      {recipe.type === 'comida ' && <TagsFood index={index} recipe={recipe} />}
+      <TagsFood index={index} recipe={recipe} />
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
       </button>

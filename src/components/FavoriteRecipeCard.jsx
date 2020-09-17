@@ -23,6 +23,7 @@ function FavoriteReceipeCard({ recipe, index }) {
   const handleFavorite = () => {
     handleClickFavorite(false, recipe);
     setIspresent(false);
+    console.log(localStorage.getItem('favoriteRecipes'));
   };
 
   const handleClick = () => {

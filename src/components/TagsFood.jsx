@@ -5,9 +5,12 @@ function TagsFood({ recipe, index }) {
   const [tagsFood, setTags] = useState([]);
 
   useEffect(() => {
-    if (recipe.tags !== null && recipe.tags !== '') {
+    console.log(recipe);
+    if (recipe.tags && typeof(recipe.tags) === 'string') {
       const tagsSeparated = recipe.tags.split(',');
       setTags([...tagsSeparated]);
+    } else if (recipe.tags) {
+      setTags([...recipe.tags])
     }
   }, []);
 

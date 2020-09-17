@@ -16,6 +16,9 @@ export default function handleClickFavorite(favorite, recipe) {
       if (element.id === recipe.idMeal) {
         index = i;
       }
+      if (element.id === recipe.id) {
+        index = i;
+      }
     });
     localFavs.splice(index, 1);
     localStorage.setItem('favoriteRecipes', JSON.stringify([...localFavs]));
