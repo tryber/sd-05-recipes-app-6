@@ -4,30 +4,26 @@ import FavoriteReceipeCard from '../components/FavoriteRecipeCard';
 
 function FavoriteReceipes() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [favoriteLocal, setFavoriteLocal] = useState([]);
   const localFavs = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   useEffect(() => {
     if (localFavs) {
       setFavoriteRecipes([...localFavs]);
+      setFavoriteLocal([...localFavs]);
     }
   }, []);
 
   const filterAll = () => {
-    if (localFavs) {
-      setFavoriteRecipes([...localFavs]);
-    }
+    setFavoriteRecipes([...favoriteLocal]);
   };
 
   const filterFood = () => {
-    if (localFavs) {
-      setFavoriteRecipes(localFavs.filter((e) => e.type === 'comida'));
-    }
+    setFavoriteRecipes(favoriteLocal.filter((e) => e.type === 'comida'));
   };
 
   const filterDrink = () => {
-    if (localFavs) {
-      setFavoriteRecipes(localFavs.filter((e) => e.type === 'bebida'));
-    }
+    setFavoriteRecipes(favoriteLocal.filter((e) => e.type === 'bebida'));
   };
 
   return (
