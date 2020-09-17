@@ -15,9 +15,9 @@ function DrinkRecipe({ recipe, checkbox }) {
 
   const handleFavorite = () => {
     if (!isFavorite) {
+      setIsfavorite(true);
       handleClickFavorite(true, recipe);
       setFavoriteImage(blackHeart);
-      setIsfavorite(true);
     } else {
       handleClickFavorite(false, recipe);
       setFavoriteImage(whiteHeart);

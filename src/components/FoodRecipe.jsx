@@ -9,18 +9,18 @@ import handleClickFavorite from '../service/handleFavoriteFood';
 
 function FoodRecipe({ recipe, checkbox }) {
   const ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  const [favoriteImg, setFavoriteImg] = useState(whiteHeart);
+  const [favoriteImg, setFavoriteImage] = useState(whiteHeart);
   const [isFavorite, setIsfavorite] = useState(false);
   const [linkCopiado, setLinkCopiado] = useState(false);
 
   const handleFavorite = () => {
     if (!isFavorite) {
-      handleClickFavorite(true, recipe);
-      setFavoriteImg(blackHeart);
+      setFavoriteImage(blackHeart);
       setIsfavorite(true);
+      handleClickFavorite(true, recipe);
     } else {
       handleClickFavorite(false, recipe);
-      setFavoriteImg(whiteHeart);
+      setFavoriteImage(whiteHeart);
       setIsfavorite(false);
     }
   };
@@ -31,7 +31,7 @@ function FoodRecipe({ recipe, checkbox }) {
       favoritos.forEach((element) => {
         if (element.id === recipe.idMeal) {
           setIsfavorite(true);
-          setFavoriteImg(blackHeart);
+          setFavoriteImage(blackHeart);
         }
       });
     }

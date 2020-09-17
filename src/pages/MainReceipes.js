@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { foodApi } from '../service/foodApi';
 import Context from '../context/Context';
 import FoodCard from '../components/FoodCard';
@@ -20,6 +21,8 @@ function MainReceipes() {
   }, []);
 
   if (!foodData.meals) return <div>Carregando...</div>;
+
+  if (foodData.meals.length === 1) return <Redirect to={`/comidas/${foodData.meals[0].idMeal}`} />;
 
   return (
     <div>
