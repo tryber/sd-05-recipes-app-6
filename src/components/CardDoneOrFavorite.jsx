@@ -4,21 +4,27 @@ import PropTypes from 'prop-types';
 import share from '../images/shareIcon.svg';
 import HorizontalTopText from './HorizontalTopText';
 import TagsFood from './TagsFood';
+import FavoriteReceipeCard from './FavoriteRecipeCard';
+import DoneRecipeCard from './DoneRecipeCard';
 
-function DoneRecipeCard({ recipe, index }) {
+function CardDoneOrRecipe({ recipe, index, page }) {
   const [linkCopiado, setLinkCopiado] = useState(false);
   const [type, setType] = useState('');
 
   useEffect(() => {
-    if (recipe.type === 'bebida') {
-      setType('bebidas');
-    } else {
+    if (recipe.type === 'comida') {
       setType('comidas');
+    } else {
+      setType('bebidas');
     }
   }, []);
 
   const handleClick = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/${type}/${recipe.id}`);
+    if (recipe.type === 'comida') {
+      navigator.clipboard.writeText(`http://localhost:3000/comidas/${recipe.id}`);
+    } else {
+      navigator.clipboard.writeText(`http://localhost:3000/bebidas/${recipe.id}`);
+    }
     setLinkCopiado(true);
   };
 
@@ -38,19 +44,20 @@ function DoneRecipeCard({ recipe, index }) {
           {recipe.name}
         </h3>
       </Link>
-      <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
-      {recipe.type === 'comida ' && <TagsFood index={index} recipe={recipe} />}
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
       </button>
       {linkCopiado && <p>Link copiado!</p>}
+      {page === 'favorite' && <FavoriteReceipeCard index={index} recipe={recipe} />}
+      {page === 'done' && <DoneRecipeCardq index={index} recipe={recipe} />}
     </div>
   );
 }
 
-export default DoneRecipeCard;
+export default CardDoneOrRecipe;
 
-DoneRecipeCard.propTypes = {
+CardDoneOrRecipe.propTypes = {
   recipe: PropTypes.instanceOf(Object).isRequired,
   index: PropTypes.number.isRequired,
+  page: PropTypes.string.isRequired,
 };
