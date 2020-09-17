@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import share from '../images/shareIcon.svg';
+import HorizontalTopText from './HorizontalTopText';
+import TagsFood from './TagsFood';
 
 function DoneRecipeCard({ recipe, index }) {
   const [linkCopiado, setLinkCopiado] = useState(false);
+  const [type, setType] = useState('');
+
+  useEffect(() => {
+    if (recipe.type === 'bebida') {
+      setType('bebidas');
+    } else {
+      setType('comidas');
+    }
+  }, []);
 
   const handleClick = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/comidas/${recipe.idMeal}`);
+    navigator.clipboard.writeText(`http://localhost:3000/${type}/${recipe.id}`);
     setLinkCopiado(true);
   };
 
+  if (!type) return <div>Carregando...</div>;
+
   return (
     <div key={recipe.id} className="food-card">
-      <Link to="">
+      <Link to={`${type}/${recipe.id}`}>
         <img
           className="food-photo" src={recipe.image}
-          alt={recipe.name} data-testid={`${index}-horizontal-image"`}
+          alt={recipe.name} data-testid={`${index}-horizontal-image`}
         />
       </Link>
-      {recipe.category && <h3>{recipe.category}</h3>}
-      {recipe.alcoholicOrNot && <h3>{recipe.alcoholicOrNot}</h3>}
-      <Link to=""><h3 data-testid={`${index}-horizontal-name`}>{recipe.name}</h3></Link>
-      <h3>{`Feita em: ${recipe.doneDate}`}</h3>
-      <p data-testid={`${index}-{tagName}-horizontal-tag`}>tag</p>
-      <p>tag</p>
+      <HorizontalTopText recipe={recipe} index={index} />
+      <Link to={`${type}/${recipe.id}`}>
+        <h3 data-testid={`${index}-horizontal-name`}>
+          {recipe.name}
+        </h3>
+      </Link>
+      <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
+      <TagsFood index={index} recipe={recipe} />
       <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
       </button>
