@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { Redirect } from 'react-router-dom';
 import { drinkApi } from '../service/drinkApi';
 import Context from '../context/Context';
 import DrinkCard from '../components/DrinkCard';
@@ -20,29 +20,24 @@ function MainReceipes() {
     return setStopApi(false);
   }, []);
 
-  if (!drinkData.drinks && stopApi) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-  } else if (!drinkData.drinks && !stopApi) {
-    return <div>Carregando...</div>;
-  } else if (drinkData.drinks.length === 1) {
-    const history = createBrowserHistory({ forceRefresh: true });
-    history.push(`/bebidas/${drinkData.drinks[0].idDrink}`);
-  } else {
-    return (
-      <div>
-        <HeaderDrinks title={'Bebidas'} showSearchIcon />
-        <CategoryFilters />
-        <div className="foto-nome-comida">
-          {drinkData.drinks.filter((a, index) => index < 12)
-            .map((drink, i) => <DrinkCard drink={drink} index={i} />)
-          }
-        </div>
-        <footer>
-          <Footer />
-        </footer>
+  if (!drinkData.drinks) return <div>Carregando...</div>;
+
+  if (drinkData.drinks.length === 1) return <Redirect to={`/bebidas/${drinkData.drinks[0].idDrink}`} />;
+
+  return (
+    <div>
+      <HeaderDrinks title={'Bebidas'} showSearchIcon />
+      <CategoryFilters />
+      <div className="foto-nome-comida">
+        {drinkData.drinks.filter((a, index) => index < 12)
+          .map((drink, i) => <DrinkCard drink={drink} index={i} />)
+        }
       </div>
-    );
-  }
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
 }
 
 export default MainReceipes;

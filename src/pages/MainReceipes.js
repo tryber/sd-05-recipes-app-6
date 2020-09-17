@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { Redirect } from 'react-router-dom';
 import { foodApi } from '../service/foodApi';
 import Context from '../context/Context';
 import FoodCard from '../components/FoodCard';
@@ -20,31 +20,26 @@ function MainReceipes() {
     return setStopApi(false);
   }, []);
 
-  if (!foodData.meals && stopApi) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-  } else if (!foodData.meals && !stopApi) {
-    return <div>Carregando...</div>;
-  } else if (foodData.meals.length === 1) {
-    const history = createBrowserHistory({ forceRefresh: true });
-    history.push(`/comidas/${foodData.meals[0].idMeal}`);
-  } else {
-    return (
-      <div>
-        <header>
-          <Header title={'Comidas'} showSearchIcon />
-        </header>
-        <CategoryFilters />
-        <div className="foto-nome-comida">
-          {foodData.meals.filter((meal, index) => index < 12)
-            .map((food, i) => <FoodCard food={food} index={i} />)
-          }
-        </div>
-        <footer>
-          <Footer />
-        </footer>
+  if (!foodData.meals) return <div>Carregando...</div>;
+
+  if (foodData.meals.length === 1) return <Redirect to={`/comidas/${foodData.meals[0].idMeal}`} />;
+
+  return (
+    <div>
+      <header>
+        <Header title={'Comidas'} showSearchIcon />
+      </header>
+      <CategoryFilters />
+      <div className="foto-nome-comida">
+        {foodData.meals.filter((meal, index) => index < 12)
+          .map((food, i) => <FoodCard food={food} index={i} />)
+        }
       </div>
-    );
-  }
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
 }
 
 export default MainReceipes;

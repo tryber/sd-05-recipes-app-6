@@ -1,6 +1,6 @@
 import { foodIngredienteApi, foodNomeApi, foodLetraApi } from '../service/foodApi';
 
-export default function foodFilter(setFoodData, setStopApi) {
+export default function foodFilter(setFoodData) {
   const radios = document.getElementsByName('filtro');
   const busca = document.querySelector('#termo-de-busca').value;
   if (busca.length > 0) {
@@ -8,13 +8,19 @@ export default function foodFilter(setFoodData, setStopApi) {
       if (radio.checked) {
         if (radio.value === 'Ingrediente') {
           foodIngredienteApi(busca).then((response) => {
-            setFoodData(response);
-            setStopApi(true);
+            if (!response.meals) {
+              alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+            } else {
+              setFoodData(response);
+            }
           });
         } else if (radio.value === 'Nome') {
           foodNomeApi(busca).then((response) => {
-            setFoodData(response);
-            setStopApi(true);
+            if (!response.meals) {
+              alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+            } else {
+              setFoodData(response);
+            }
           });
         } else if (radio.value === 'Primeira letra') {
           if (busca.length > 1) {
@@ -22,7 +28,6 @@ export default function foodFilter(setFoodData, setStopApi) {
           } else {
             foodLetraApi(busca).then((response) => {
               setFoodData(response);
-              setStopApi(true);
             });
           }
         }
