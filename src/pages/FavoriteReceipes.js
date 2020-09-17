@@ -7,19 +7,27 @@ function FavoriteReceipes() {
   const localFavs = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   useEffect(() => {
-    setFavoriteRecipes([...localFavs]);
+    if (localFavs) {
+      setFavoriteRecipes([...localFavs]);
+    }
   }, []);
 
   const filterAll = () => {
-    setFavoriteRecipes([...localFavs]);
+    if (localFavs) {
+      setFavoriteRecipes([...localFavs]);
+    }
   };
 
   const filterFood = () => {
-    setFavoriteRecipes(localFavs.filter((e) => e.type === 'comida'));
+    if (localFavs) {
+      setFavoriteRecipes(localFavs.filter((e) => e.type === 'comida'));
+    }
   };
 
   const filterDrink = () => {
-    setFavoriteRecipes(localFavs.filter((e) => e.type === 'bebida'));
+    if (localFavs) {
+      setFavoriteRecipes(localFavs.filter((e) => e.type === 'bebida'));
+    }
   };
 
   return (
