@@ -7,7 +7,9 @@ function MadeReceipes() {
 
   useEffect(() => {
     const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
-    setDoneRecipes([...localDone]);
+    if (localDone) {
+      setDoneRecipes([...localDone]);
+    }
   }, []);
 
   return (

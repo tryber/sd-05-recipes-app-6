@@ -22,7 +22,7 @@ function FavoriteReceipeCard({ recipe, index }) {
   return (
     <div key={recipe.id} className="drink-card">
       <Link to="">
-        <img className="drink-photo" src={recipe.image} alt={recipe.name} data-testid={`${index}-horizontal-image"`} />
+        <img className="drink-photo" src={recipe.image} alt={recipe.name} data-testid={`${index}-horizontal-image`} />
       </Link>
       {recipe.category && <h3>{recipe.category}</h3>}
       {recipe.alcoholicOrNot && <h3>{recipe.alcoholicOrNot}</h3>}
