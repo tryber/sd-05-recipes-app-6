@@ -5,15 +5,17 @@ import PropTypes from 'prop-types';
 
 function FoodCard({ food, index }) {
   return (
-    <Link to={`/comidas/${food.idMeal}`}>
-      <div className="food-card" data-testid={`${index}-recipe-card`}>
-        <img
-          data-testid={`${index}-card-img`} className="food-photo"
-          src={food.strMealThumb} alt={food.strMeal}
-        />
-        <h3 data-testid={`${index}-card-name`} className="food-name">{food.strMeal}</h3>
-      </div>
-    </Link>
+    <div className="food-card">
+      <Link to={`/comidas/${food.idMeal}`}>
+        <div data-testid={`${index}-recipe-card`}>
+          <img
+            data-testid={`${index}-card-img`} className="food-photo"
+            src={food.strMealThumb} alt={food.strMeal}
+          />
+          <h3 data-testid={`${index}-card-name`} className="food-name">{food.strMeal}</h3>
+        </div>
+      </Link>
+    </div>
   );
 }
 

@@ -16,7 +16,7 @@ function SearchIcon() {
 
   return (
     <div>
-      <button src={search} onClick={changeSearchBar} data-testid="search-top-btn">
+      <button className="btn-procurar" src={search} onClick={changeSearchBar} data-testid="search-top-btn">
         <img src={search} alt="Procurar" />
       </button>
     </div>

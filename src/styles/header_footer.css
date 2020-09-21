@@ -1,31 +1,64 @@
-.header , .footer {
-  background-color: #c4c4c4;
-  display: flex;
-  justify-content: space-around;
-  width: 100vh;
+/*Arquivos:
+Header.jsx | Footer.jsx | SearchBar.jsx | SearchIcon.jsx
+Explore.js*/
+
+body {
+  margin: 0px;
+  background-color: #F1F1F1;
 }
 
-.header {
-  height: 35px;
+.header , .footer { /* Header.jsx Footer.jsx */
+  background-color: #F1C232;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 0px;
+  max-width: 375px;
+}
+
+.header { /* Header.jsx */
+  align-items: center;
+  display: flex;
+  margin-top: 0;
   position: fixed;
   width: 100%;
 }
 
-.footer {
+.btn-perfil , .btn-procurar {
+  /* Header.jsx SearchIcon.jsx */
+  background-color: transparent;
+  border: unset;
+}
+
+.header-title { /* Header.jsx */
+  margin-top: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.search-bar { /* SearchBar.jsx */
+  padding-top: 60px;
+}
+
+.footer { /* Footer.jsx */
   display: flex;
   margin-bottom: 0;
-  position: absolute;
   width: 100%;
 }
 
-.explore {
+.btn-explore { /* Footer.jsx */
+  background-color: transparent;
+  border: unset;
+}
+
+.explore { /* Explore.js */
   display: inline-block;
   flex-direction: row;
-  height: 500px;
-  margin: 90px 15px 10px;
+  text-align: center;
+  margin-top: 100px;
+  background-color: transparent;
 }
 
-.btn , .exp-comida {
+.btn { /* Explore.js */
   background-color: white;
   border-radius: 6px;
   box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
@@ -46,24 +79,8 @@
   width: 322px;
 }
 
-.btn , .exp-bebida {
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
-  color: black;
-  font-family: -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    Open Sans,
-    Helvetica Neue,
-    sans-serif;
-  font-size: 32px;
-  font-style: normal;
-  height: 89px;
+.exp-bebida { /* Explore.js */
   margin-top: 30px;
-  width: 322px;
 }
+  /* width: 322px;
+} */

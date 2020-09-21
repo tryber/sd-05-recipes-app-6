@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './styles/App.css';
+import './styles/header_footer.css';
 import Provider from './context/Provider';
 import Login from './pages/Login';
 import MainReceipes from './pages/MainReceipes';

@@ -46,7 +46,7 @@ function DrinkRecipe({ recipe, checkbox }) {
 
   return (
     <div>
-      <img data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={recipe.strDrink} />
+      <img className="recipe-photo" data-testid="recipe-photo" src={recipe.strDrinkThumb} alt={recipe.strDrink} />
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
       <button data-testid="share-btn" src={share} onClick={handleClick}>
         <img src={share} alt="share" />

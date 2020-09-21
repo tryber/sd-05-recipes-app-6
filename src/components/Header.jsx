@@ -14,14 +14,14 @@ function Header({ title, showSearchIcon }) {
     <div>
       <div className="header">
         <Link to="/perfil">
-          <button src={profile}>
+          <button className="btn-perfil" src={profile}>
             <img
               className="img-perfil" src={profile} alt="Perfil"
               data-testid="profile-top-btn"
             />
           </button>
         </Link>
-        <h2 data-testid="page-title">{title}</h2>
+        <h2 className="header-title" data-testid="page-title">{title}</h2>
         {(showSearchIcon && <SearchIcon />)}
       </div>
       {showSearchBar && <SearchBar />}

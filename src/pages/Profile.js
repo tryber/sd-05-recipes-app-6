@@ -12,7 +12,7 @@ function Profile() {
   }, []);
 
   return (
-    <div>
+    <div className="perfil">
       <Header title={'Perfil'} showSearchIcon={false} />
       <div>
         <div data-testid="profile-email">{email}</div>
