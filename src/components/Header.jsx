@@ -21,7 +21,9 @@ function Header({ title, showSearchIcon }) {
             />
           </button>
         </Link>
-        <h2 className="header-title" data-testid="page-title">{title}</h2>
+        <div className="header-title">
+          <h2 data-testid="page-title">{title}</h2>
+        </div>
         {(showSearchIcon && <SearchIcon />)}
       </div>
       {showSearchBar && <SearchBar />}

@@ -19,6 +19,7 @@ body {
   align-items: center;
   display: flex;
   margin-top: 0;
+  height: 45px;
   position: fixed;
   width: 100%;
 }
