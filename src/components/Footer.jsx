@@ -12,7 +12,7 @@ function Footer() {
     history.push('/explorar');
   };
   return (
-    <footer className="footer btn-fixed" data-testid="footer">
+    <footer className="footer btn-fixed2" data-testid="footer">
       <Link to="/bebidas" data-testid="drinks-bottom-btn" src={drink}>
         <img src={drink} alt="Drink" />
       </Link>

@@ -47,26 +47,28 @@ function FoodRecipe({ recipe, checkbox }) {
   return (
     <div>
       <img className="recipe-photo" data-testid="recipe-photo" src={recipe.strMealThumb} alt={recipe.strMeal} />
-      <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <button data-testid="share-btn" src={share} onClick={handleClick}>
-        <img src={share} alt="share" />
-      </button>
-      {linkCopiado && <p>Link copiado!</p>}
-      <button data-testid="favorite-btn" src={favoriteImg} onClick={handleFavorite}>
-        <img src={favoriteImg} alt="favorite" />
-      </button>
-      <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
-      <h3>Ingredients</h3>
-      {ingredients.map((ingredient, i) => {
-        if (recipe[`strIngredient${ingredient}`] && !checkbox) {
-          return <IngredientsList recipe={recipe} ingredient={ingredient} index={i} />;
-        } else if (recipe[`strIngredient${ingredient}`]) {
-          return <IngredientsListCheck recipe={recipe} ingredient={ingredient} index={i} />;
-        }
-        return null;
-      })}
-      <h3>Instructions</h3>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+      <div className="recipe-page">
+        <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
+        <button data-testid="share-btn" src={share} onClick={handleClick}>
+          <img src={share} alt="share" />
+        </button>
+        {linkCopiado && <p>Link copiado!</p>}
+        <button data-testid="favorite-btn" src={favoriteImg} onClick={handleFavorite}>
+          <img src={favoriteImg} alt="favorite" />
+        </button>
+        <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
+        <h3>Ingredients</h3>
+        {ingredients.map((ingredient, i) => {
+          if (recipe[`strIngredient${ingredient}`] && !checkbox) {
+            return <IngredientsList recipe={recipe} ingredient={ingredient} index={i} />;
+          } else if (recipe[`strIngredient${ingredient}`]) {
+            return <IngredientsListCheck recipe={recipe} ingredient={ingredient} index={i} />;
+          }
+          return null;
+        })}
+        <h3>Instructions</h3>
+        <p data-testid="instructions">{recipe.strInstructions}</p>
+      </div>
     </div>
   );
 }

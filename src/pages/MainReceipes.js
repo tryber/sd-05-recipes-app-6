@@ -29,8 +29,8 @@ function MainReceipes() {
       <header>
         <Header title={'Comidas'} showSearchIcon />
       </header>
-      <CategoryFilters />
-      <div className="foto-nome-comida">
+      <div className="foto-nome-comida btn-escondido">
+        <CategoryFilters />
         {foodData.meals.filter((meal, index) => index < 12)
           .map((food, i) => <FoodCard food={food} index={i} />)
         }

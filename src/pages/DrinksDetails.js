@@ -53,7 +53,7 @@ function DrinkDetail(props) {
         className="btn-fixed" to={`/bebidas/${recipe.idDrink}/in-progress`}
         data-testid="start-recipe-btn"
       >
-        <button>{labelButton}</button>
+        <button className="btn-iniciar-receita">{labelButton}</button>
       </Link>}
     </div>
   );

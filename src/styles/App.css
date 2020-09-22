@@ -54,13 +54,14 @@ body {
   box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   display: inline-block;
   flex-direction: row;
-  margin: 50px 20px 1px 30px;
+  margin: 20px 20px 1px 30px;
   width: 130px;
 }
 
 .food-photo , .drink-photo { /*FoodCard.jsx | DrinkCard.jsx*/
   height: 140px;
   width: 130px;
+  border-radius: 6px;
 }
 
 .food-name , .drink-name { /*FoodCard.jsx | DrinkCard.jsx*/
@@ -80,11 +81,18 @@ body {
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
+  padding: 0px 10px;
 }
 
 .btn-fixed {
   bottom: 0;
-  left: 0;
+  margin: 10px;
+  position: fixed;
+  left: 29%;
+}
+
+.btn-fixed2 {
+  bottom: 0;
   margin: 10px;
   position: fixed;
 }
@@ -118,6 +126,7 @@ body {
 .carousel {
   display: flex;
   overflow: auto;
+  margin-bottom: 70px;
 }
 
 .recipe-photo { /*DrinkRecipe.jsx | FoodRecipe.jsx*/
@@ -131,7 +140,6 @@ body {
 }
 
 .email-perfil { /* Profile.js */
-  border: black solid 1px;
   border-radius: 6px;
   font-size: 20px;
   font-family: -apple-system,
@@ -144,10 +152,63 @@ body {
   Open Sans,
   Helvetica Neue,
   sans-serif;
-  background-color: #F5A624;
   margin-right: 30px;
+}
+
+.profile-btn {
+  margin-bottom: 10px;
 }
 
 .foto-nome-comida { /* MainReceipes.js */
   padding-bottom: 58px;
+}
+
+.btn-opcoes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-btn {
+  background-color: #F1C232;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.recipe-page {
+  padding: 10px;
+}
+
+.btn-iniciar-receita {
+  background-color: #F1C232;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.info-receita-feita {
+  padding: 5px;
+}
+
+.done-recipe {
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 6px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: row;
+  margin: 30px 5px 10px 5px;
+}
+
+.name-direction {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn-escondido {
+  padding-top: 50px;
+}
+
+.compartilhar {
+  border: unset;
 }

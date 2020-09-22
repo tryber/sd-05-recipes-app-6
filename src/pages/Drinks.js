@@ -27,11 +27,13 @@ function MainReceipes() {
   return (
     <div>
       <HeaderDrinks title={'Bebidas'} showSearchIcon />
+      <div className="btn-escondido">
       <CategoryFilters />
       <div className="foto-nome-comida">
         {drinkData.drinks.filter((a, index) => index < 12)
           .map((drink, i) => <DrinkCard drink={drink} index={i} />)
         }
+      </div>
       </div>
       <footer>
         <Footer />

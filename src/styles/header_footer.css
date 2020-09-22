@@ -36,14 +36,36 @@ body {
   text-align: center;
 }
 
+.div-vazia {
+  width: 30px;
+}
+
+.search-bar-int {
+  text-align: center;
+}
+
 .search-bar { /* SearchBar.jsx */
   padding-top: 60px;
+  text-align: center;
+}
+
+.input-txt {
+  height: 20px;
+  margin-bottom: 12px;
+  width: 353px;
+}
+
+.opcoes-busca {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
 }
 
 .footer { /* Footer.jsx */
   display: flex;
   margin-bottom: 0;
   width: 100%;
+  align-items: center;
 }
 
 .btn-explore { /* Footer.jsx */

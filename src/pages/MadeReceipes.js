@@ -27,7 +27,7 @@ function MadeReceipes() {
   return (
     <div>
       <Header title={'Receitas Feitas'} showSearchIcon={false} />
-      <div>
+      <div className="btn-escondido">
         <button data-testid="filter-by-all-btn" onClick={filterAll}>All</button>
         <button data-testid="filter-by-food-btn" onClick={filterFood}>Food</button>
         <button data-testid="filter-by-drink-btn" onClick={filterDrink}>Drinks</button>

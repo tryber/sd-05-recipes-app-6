@@ -25,7 +25,7 @@ function ExploreFoodArea() {
       <div>
         <Header title={'Explorar Origem'} showSearchIcon />
         <FoodDropDown />
-        <div className="foto-nome-comida">
+        <div className="foto-nome-comida btn-escondido">
           {foodData.meals.filter((meal, index) => index < 12)
             .map((food, i) => <FoodCard food={food} index={i} />)
           }

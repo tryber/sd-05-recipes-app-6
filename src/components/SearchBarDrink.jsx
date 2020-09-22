@@ -6,11 +6,11 @@ const SearchBarDrink = () => {
   const { setDrinkData } = useContext(Context);
 
   return (
-    <div>
-      <div>
-        <input type="text" data-testid="search-input" id="termo-de-busca" />
+    <div className="search-bar-int">
+      <div className="search-bar">
+        <input className="input-txt" type="text" data-testid="search-input" id="termo-de-busca" />
       </div>
-      <div>
+      <div className="opcoes-busca">
         <input
           type="radio"
           data-testid="ingredient-search-radio"
@@ -29,8 +29,6 @@ const SearchBarDrink = () => {
           data-testid="first-letter-search-radio"
         />
         <label htmlFor="Primeira letra">Primeira letra</label>
-      </div>
-      <div>
         <button
           data-testid="exec-search-btn"
           onClick={() => filter(setDrinkData)}

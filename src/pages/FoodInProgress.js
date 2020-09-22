@@ -38,7 +38,7 @@ function FoodInProgress(props) {
     <div>
       <FoodRecipe recipe={recipe} checkbox />
       <button
-        className="btn-fixed" data-testid="finish-recipe-btn"
+        className="btn-fixed btn-iniciar-receita" data-testid="finish-recipe-btn"
         onClick={handleClick} disabled={btnDisabled}
       >
         Finalizar Receita

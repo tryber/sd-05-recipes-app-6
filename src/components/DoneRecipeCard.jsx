@@ -25,25 +25,29 @@ function DoneRecipeCard({ recipe, index }) {
   if (!type) return <div>Carregando...</div>;
 
   return (
-    <div key={recipe.id} className="food-card">
+    <div key={recipe.id} className="done-recipe">
       <Link to={`${type}/${recipe.id}`}>
         <img
           className="food-photo" src={recipe.image}
           alt={recipe.name} data-testid={`${index}-horizontal-image`}
         />
       </Link>
-      <HorizontalTopText recipe={recipe} index={index} />
+      <div className="info-receita-feita">
+        <div className="name-direction">
+          <HorizontalTopText recipe={recipe} index={index} />
+          <button className="compartilhar" data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
+            <img src={share} alt="share" />
+          </button>
+          {linkCopiado && <p>Link copiado!</p>}
+        </div>
       <Link to={`${type}/${recipe.id}`}>
-        <h3 data-testid={`${index}-horizontal-name`}>
+        <h2 data-testid={`${index}-horizontal-name`}>
           {recipe.name}
-        </h3>
+        </h2>
       </Link>
       <h3 data-testid={`${index}-horizontal-done-date`}>{`Feita em: ${recipe.doneDate}`}</h3>
       <TagsFood index={index} recipe={recipe} />
-      <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
-        <img src={share} alt="share" />
-      </button>
-      {linkCopiado && <p>Link copiado!</p>}
+      </div>
     </div>
   );
 }

@@ -29,9 +29,10 @@ export default function CategoryFilters() {
     }
   };
   return (
-    <div>
+    <div className="btn-opcoes">
       {filtersData.map((filter) => (
         <button
+          className="btn-btn"
           key={filter}
           type="button"
           data-testid={`${filter}-category-filter`}

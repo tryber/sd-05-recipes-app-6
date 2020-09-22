@@ -25,6 +25,7 @@ function Header({ title, showSearchIcon }) {
           <h2 data-testid="page-title">{title}</h2>
         </div>
         {(showSearchIcon && <SearchIcon />)}
+        {(!showSearchIcon && <div className="div-vazia"></div>)}
       </div>
       {showSearchBar && <SearchBar />}
     </div>

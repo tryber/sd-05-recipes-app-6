@@ -44,11 +44,12 @@ function FavoriteReceipeCard({ recipe, index }) {
       </Link>
       <HorizontalTopText recipe={recipe} index={index} />
       <Link to={`${type}/${recipe.id}`}><h2 data-testid={`${index}-horizontal-name`}>{recipe.name}</h2></Link>
-      <button data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
+      <button className="compartilhar" data-testid={`${index}-horizontal-share-btn`} src={share} onClick={handleClick}>
         <img src={share} alt="share" />
       </button>
       {linkCopiado && <p>Link copiado!</p>}
       <button
+        className="compartilhar"
         data-testid={`${index}-horizontal-favorite-btn`}
         src={blackHeart} onClick={handleFavorite}
       >

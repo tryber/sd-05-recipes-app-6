@@ -29,6 +29,7 @@ function FavoriteReceipes() {
   return (
     <div>
       <Header title={'Receitas Favoritas'} showSearchIcon={false} />
+      <div className="btn-escondido">
       <button data-testid="filter-by-all-btn" onClick={filterAll}>All</button>
       <button data-testid="filter-by-food-btn" onClick={filterFood}>Food</button>
       <button data-testid="filter-by-drink-btn" onClick={filterDrink}>Drinks</button>
@@ -36,6 +37,7 @@ function FavoriteReceipes() {
         {favoriteRecipes.map((element, i) => (
           <FavoriteReceipeCard index={i} recipe={element} />
         ))}
+      </div>
       </div>
     </div>
   );
