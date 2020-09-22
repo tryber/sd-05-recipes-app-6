@@ -39,7 +39,7 @@ function FoodDetail(props) {
     <div>
       <FoodRecipe recipe={recipe} />
       <iframe
-        data-testid="video" width="420" height="315"
+        data-testid="video" width="371" height="315"
         src={`https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}`}
       />
       <h3>Recomendadas</h3>
@@ -52,7 +52,7 @@ function FoodDetail(props) {
         className="btn-fixed" to={`/comidas/${recipe.idMeal}/in-progress`}
         data-testid="start-recipe-btn"
       >
-        <button>{labelButton}</button>
+        <button className="btn-iniciar-receita">{labelButton}</button>
       </Link>}
     </div>
   );

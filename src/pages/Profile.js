@@ -14,9 +14,10 @@ function Profile() {
   return (
     <div>
       <Header title={'Perfil'} showSearchIcon={false} />
-      <div>
-        <div data-testid="profile-email">{email}</div>
+      <div className="perfil">
+        <div className="email-perfil" data-testid="profile-email">Olá <br/> {email}</div>
         <button
+          className="profile-btn btn"
           type="button"
           data-testid="profile-done-btn"
           onClick={() => goToDone()}
@@ -24,6 +25,7 @@ function Profile() {
           Receitas Feitas
         </button>
         <button
+          className="profile-btn btn"
           type="button"
           data-testid="profile-favorite-btn"
           onClick={() => goToFavorites()}
@@ -31,6 +33,7 @@ function Profile() {
           Receitas Favoritas
         </button>
         <button
+          className="profile-btn btn"
           type="button"
           data-testid="profile-logout-btn"
           onClick={() => goToLogin()}

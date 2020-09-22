@@ -14,15 +14,18 @@ function Header({ title, showSearchIcon }) {
     <div>
       <div className="header">
         <Link to="/perfil">
-          <button src={profile}>
+          <button className="btn-perfil" src={profile}>
             <img
               className="img-perfil" src={profile} alt="Perfil"
               data-testid="profile-top-btn"
             />
           </button>
         </Link>
-        <h2 data-testid="page-title">{title}</h2>
+        <div className="header-title">
+          <h2 data-testid="page-title">{title}</h2>
+        </div>
         {(showSearchIcon && <SearchIcon />)}
+        {(!showSearchIcon && <div className="div-vazia"></div>)}
       </div>
       {showSearchBar && <SearchBar />}
     </div>

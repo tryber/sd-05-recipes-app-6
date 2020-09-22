@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import createBrowserHistory from 'history/createBrowserHistory';
-// import '../styles/App.css';
+import ihooks from '../images/ihooks.png';
 
 export default function Login() {
   const [disableButton, setButton] = useState(true);
@@ -22,16 +22,17 @@ export default function Login() {
     history.push('/comidas');
   };
   const btnDisabled = () => (
-    <button disabled type="button" data-testid="login-submit-btn">Entrar</button>
+    <button className="botao" disabled type="button" data-testid="login-submit-btn">Entrar</button>
   );
   const btnAbled = () => (
-    <button type="button" data-testid="login-submit-btn" onClick={() => submitUser()}>
+    <button className="botao ok" type="button" data-testid="login-submit-btn" onClick={() => submitUser()}>
       Entrar
     </button>
   );
   return (
     <div className="login">
-      <h2>Login</h2>
+      <img className="img-ihooks" src={ihooks} alt="logo-ihooks" />
+      <h2 className="login-txt">Login</h2>
       <input
         type="email"
         placeholder="Email"

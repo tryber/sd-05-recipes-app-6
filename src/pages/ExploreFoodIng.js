@@ -20,7 +20,7 @@ function ExploreFoodIng() {
   return (
     <div>
       <Header title={'Explorar Ingredientes'} showSearchIcon={false} />
-      <div className="foto-nome-comida">
+      <div className="foto-nome-comida btn-escondido">
         {drinkIng.map((ing, index) => <FoodIngCard ing={ing} index={index} />)}
       </div>
       <Footer />

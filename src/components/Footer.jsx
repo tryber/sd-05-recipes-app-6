@@ -12,12 +12,12 @@ function Footer() {
     history.push('/explorar');
   };
   return (
-    <footer className="footer btn-fixed" data-testid="footer">
+    <footer className="footer btn-fixed2" data-testid="footer">
       <Link to="/bebidas" data-testid="drinks-bottom-btn" src={drink}>
         <img src={drink} alt="Drink" />
       </Link>
 
-      <button data-testid="explore-bottom-btn" onClick={() => btn()} src={explore}>
+      <button className="btn-explore" data-testid="explore-bottom-btn" onClick={() => btn()} src={explore}>
         <img src={explore} alt="Explore" />
       </button>
       {/* <Link to="/explorar" data-testid="explore-bottom-btn">

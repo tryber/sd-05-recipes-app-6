@@ -22,15 +22,15 @@ function MainReceipes() {
 
   if (!foodData.meals) return <div>Carregando...</div>;
 
-  if (foodData.meals.length === 1) return <Redirect to={`/comidas/${foodData.meals[0].idMeal}`} />;
+  if (foodData.meals.length === 1 && stopApi) return <Redirect to={`/comidas/${foodData.meals[0].idMeal}`} />;
 
   return (
     <div>
       <header>
         <Header title={'Comidas'} showSearchIcon />
       </header>
-      <CategoryFilters />
-      <div className="foto-nome-comida">
+      <div className="foto-nome-comida btn-escondido">
+        <CategoryFilters />
         {foodData.meals.filter((meal, index) => index < 12)
           .map((food, i) => <FoodCard food={food} index={i} />)
         }

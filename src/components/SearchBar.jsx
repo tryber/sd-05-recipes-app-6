@@ -3,14 +3,14 @@ import Context from '../context/Context';
 import filter from '../service/foodFilter';
 
 const SearchBar = () => {
-  const { setFoodData } = useContext(Context);
+  const { setFoodData, setStopApi } = useContext(Context);
 
   return (
-    <div>
-      <div>
-        <input type="text" data-testid="search-input" id="termo-de-busca" />
+    <div className="search-bar-int">
+      <div className="search-bar">
+        <input className="input-txt" type="text" data-testid="search-input" id="termo-de-busca" />
       </div>
-      <div>
+      <div className="opcoes-busca">
         <input
           type="radio"
           id="Ingrediente"
@@ -29,11 +29,9 @@ const SearchBar = () => {
           data-testid="first-letter-search-radio"
         />
         <label htmlFor="Primeira letra">Primeira letra</label>
-      </div>
-      <div>
         <button
           data-testid="exec-search-btn"
-          onClick={() => filter(setFoodData)}
+          onClick={() => filter(setFoodData, setStopApi)}
         >
           Buscar
         </button>
